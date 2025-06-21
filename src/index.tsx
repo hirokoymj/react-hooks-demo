@@ -1,19 +1,57 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Root from './routes/root';
+import ErrorPage from './error-page';
+import Contact from './routes/contact';
+import Demo1 from './react-hooks-useMemo/Demo1';
+import Demo2 from './react-hooks-useMemo/Demo2';
+import ParentComponent from './react-hooks-useCallback/ParentComponent';
+import Demo from './react-hooks-useCallback/Demo';
+import Users from './react-hooks-useEffect/Users';
+import DemoEffect from "./react-hooks-useEffect/DemoEffect"
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'contacts/:contactId',
+        element: <Contact />,
+      },
+      {
+        path: 'memo1',
+        element: <Demo1 />,
+      },
+      {
+        path: 'memo2',
+        element: <Demo2 />,
+      },
+      {
+        path: 'useCallback-1',
+        element: <ParentComponent />,
+      },
+      {
+        path: 'useCallback-2',
+        element: <Demo />,
+      },
+      {
+        path: 'users',
+        element: <Users />,
+      },
+      {
+        path: 'demo-effect',
+        element: <DemoEffect />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
