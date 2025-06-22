@@ -4,12 +4,9 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>React Hooks Demo</h1>
         <nav>
           <ul>
-            <li>
-              <Link to={`contacts/1`}>Your Name</Link>
-            </li>
             <li>
               <Link to={`memo1`}>useMemo example 1</Link>
             </li>
@@ -38,13 +35,16 @@ export default function Root() {
               <Link to={`temp-unit-convert-demo`}>Custom Hooks example 2</Link>
             </li>
             <li>
-              <Link to={`app`}>useDeferredValue example 1</Link>
+              <Link to={`deferred-demo1`}>useDeferredValue example 1</Link>
             </li>
             <li>
               <Link to={`deferred-demo2`}>useDeferredValue example 2</Link>
             </li>
             <li>
-              <Link to={`transition-demo1`}>useTransition example 1</Link>
+              <Link to={`transition-demo1`}>useTransition</Link>
+            </li>
+            <li>
+              <Link to={`useId-demo`}>useId</Link>
             </li>
           </ul>
         </nav>

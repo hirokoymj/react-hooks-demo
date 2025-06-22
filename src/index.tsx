@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Root from './routes/root';
 import ErrorPage from './error-page';
-import Contact from './routes/contact';
+//import Contact from './routes/contact';
 import Demo1 from './react-hooks-useMemo/Demo1';
 import Demo2 from './react-hooks-useMemo/Demo2';
 import ParentComponent from './react-hooks-useCallback/ParentComponent';
@@ -16,7 +16,8 @@ import ToggleDemo from './react-hooks-customHook/ToggleDemo';
 import TempUnitConvertDemo from './react-hooks-customHook/TempUnitConvertDemo';
 import DeferredDemo from './react-hooks-useDeferredValue/example1/DeferredDemo';
 import DeferredDemo2 from './react-hooks-useDeferredValue/example2/DeferredDemo2';
-import App from './react-hooks-useTransition/App';
+import DemoTransition from './react-hooks-useTransition/DemoTransition';
+import DemoIdHook from './react-hooks-useId/DemoIdHook';
 
 const router = createBrowserRouter([
   {
@@ -24,10 +25,6 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: 'contacts/:contactId',
-        element: <Contact />,
-      },
       {
         path: 'memo1',
         element: <Demo1 />,
@@ -65,7 +62,7 @@ const router = createBrowserRouter([
         element: <TempUnitConvertDemo />,
       },
       {
-        path: 'deferred-demo',
+        path: 'deferred-demo1',
         element: <DeferredDemo />,
       },
       {
@@ -74,7 +71,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'transition-demo1',
-        element: <App />,
+        element: <DemoTransition />,
+      },
+      {
+        path: 'useId-demo',
+        element: <DemoIdHook />,
       },
     ],
   },

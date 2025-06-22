@@ -1,7 +1,7 @@
 ## useCallback
 
+- useCallback returns a memorized function and it is called only when dependency changes.
 - Skipping unnecessary re-render.
-- useCallback returns a memorized function.
 - https://react.dev/reference/react/useCallback
 
 ```js
@@ -14,19 +14,17 @@ const Child = React.memo(({ fn }) => {});
 - [ParentComponent.tsx](./src/react-hooks-useCallback/ParentComponent.tsx)
 - http://localhost:3000/useCallback-1
 
-#### Problem:
+**Problem:**
 
 - How to prevent the child components from being re rendered when the button in the app component is clicked?
 - In React, when you create a function inside a functional component, it's recreated every time the component renders. For example:
 - In React when the state of a parent component changes, it triggers a re- render of the parent component and its children. This is because React follows a unidirectional data flow, where changes in the state or props of a parent component can affect the rendering of its child components.
 
-#### Solution
+**Solution:**
 
 - Use `usecallback` AND the `memo hook`.
-- `useCallback` hook and memo. useCallback hook means that do not recreate me(the function) unless my dependencies change.
-- **memo** is a HOC to prevent a component from re-rendering unless its props have changed. memo will cause React to skip rendering a component if its props have not changed
 
-## Reference
+**Reference:**
 
 - https://react.dev/reference/react/useCallback
 - https://react.dev/reference/react/memo

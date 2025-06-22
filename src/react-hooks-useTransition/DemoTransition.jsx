@@ -1,6 +1,6 @@
 import { useState, useTransition } from 'react';
 
-function App() {
+function DemoTransition() {
   const [isPending, startTransition] = useTransition();
   const [input, setInput] = useState('');
   const [items, setItems] = useState([]);
@@ -48,4 +48,4 @@ function App() {
   );
 }
 
-export default App;
+export default DemoTransition;
