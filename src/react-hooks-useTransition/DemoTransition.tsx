@@ -1,21 +1,24 @@
+import React from 'react';
 import { useState, useTransition } from 'react';
 
 function DemoTransition() {
   const [isPending, startTransition] = useTransition();
-  const [input, setInput] = useState('');
-  const [items, setItems] = useState([]);
+  const [input, setInput] = useState<string>('');
+  const [items, setItems] = useState<string[]>([]);
 
-  function handleChange(e) {
-    setInput(e.target.value);
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const value = (e.target as HTMLInputElement).value;
+    setInput(value);
+    //setInput(e.target.value);
     startTransition(() => {
       const temp_items = [];
       // this loop takes time
       for (let i = 0; i < 25000; i++) {
-        temp_items.push(e.target.value);
+        temp_items.push(value);
       }
       setItems(temp_items);
     });
-  }
+  };
 
   function generateName() {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';

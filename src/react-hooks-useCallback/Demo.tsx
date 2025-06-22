@@ -4,8 +4,6 @@ import Search from './Search';
 
 const allUsers: string[] = ['john', 'alex', 'george', 'simon', 'james'];
 
-//interface DemoProps {}
-
 export default function Demo() {
   const [users, setUsers] = useState<string[]>(allUsers);
 
