@@ -28,6 +28,24 @@ export default function Root() {
             <li>
               <Link to={`demo-effect`}>useEffect example 2 (with destroy)</Link>
             </li>
+            <li>
+              <Link to={`counter-demo`}>useState example 1</Link>
+            </li>
+            <li>
+              <Link to={`toggle-demo`}>Custom Hooks example 1</Link>
+            </li>
+            <li>
+              <Link to={`temp-unit-convert-demo`}>Custom Hooks example 2</Link>
+            </li>
+            <li>
+              <Link to={`app`}>useDeferredValue example 1</Link>
+            </li>
+            <li>
+              <Link to={`deferred-demo2`}>useDeferredValue example 2</Link>
+            </li>
+            <li>
+              <Link to={`transition-demo1`}>useTransition example 1</Link>
+            </li>
           </ul>
         </nav>
       </div>

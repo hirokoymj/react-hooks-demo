@@ -10,7 +10,13 @@ import Demo2 from './react-hooks-useMemo/Demo2';
 import ParentComponent from './react-hooks-useCallback/ParentComponent';
 import Demo from './react-hooks-useCallback/Demo';
 import Users from './react-hooks-useEffect/Users';
-import DemoEffect from "./react-hooks-useEffect/DemoEffect"
+import DemoEffect from './react-hooks-useEffect/DemoEffect';
+import CounterDemo from './react-hooks-useState/DemoCounter';
+import ToggleDemo from './react-hooks-customHook/ToggleDemo';
+import TempUnitConvertDemo from './react-hooks-customHook/TempUnitConvertDemo';
+import DeferredDemo from './react-hooks-useDeferredValue/example1/DeferredDemo';
+import DeferredDemo2 from './react-hooks-useDeferredValue/example2/DeferredDemo2';
+import App from './react-hooks-useTransition/App';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +51,30 @@ const router = createBrowserRouter([
       {
         path: 'demo-effect',
         element: <DemoEffect />,
+      },
+      {
+        path: 'counter-demo',
+        element: <CounterDemo />,
+      },
+      {
+        path: 'toggle-demo',
+        element: <ToggleDemo />,
+      },
+      {
+        path: 'temp-unit-convert-demo',
+        element: <TempUnitConvertDemo />,
+      },
+      {
+        path: 'deferred-demo',
+        element: <DeferredDemo />,
+      },
+      {
+        path: 'deferred-demo2',
+        element: <DeferredDemo2 />,
+      },
+      {
+        path: 'transition-demo1',
+        element: <App />,
       },
     ],
   },
