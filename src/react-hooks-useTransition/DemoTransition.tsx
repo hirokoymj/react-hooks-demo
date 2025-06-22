@@ -9,10 +9,8 @@ function DemoTransition() {
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value;
     setInput(value);
-    //setInput(e.target.value);
     startTransition(() => {
       const temp_items = [];
-      // this loop takes time
       for (let i = 0; i < 25000; i++) {
         temp_items.push(value);
       }

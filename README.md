@@ -8,3 +8,9 @@
 - [useTransition](./README-useTransition.md)
 - [useId](./README-useId.md)
 - [Custom Hooks](./README-customHooks.md)
+
+#### Run demo
+
+```js
+npm run start
+```

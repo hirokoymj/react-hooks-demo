@@ -11,7 +11,7 @@ startTransition(() => {});
 ## Example 1
 
 - http://localhost:3000/transition-demo1
-- [Transition.jsx](./src/react-hooks-useTransition/DemoTransition.jsx)
+- [Transition.tsx](./src/react-hooks-useTransition/DemoTransition.tsx)
 
 **Problem:**
 

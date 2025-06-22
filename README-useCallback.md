@@ -24,17 +24,13 @@ const Child = React.memo(({ fn }) => {});
 
 - Use `usecallback` AND the `memo hook`.
 
-**Reference:**
-
-- https://react.dev/reference/react/useCallback
-- https://react.dev/reference/react/memo
-
 <hr />
 
 #### Example 2
 
 - http://localhost:3000/useCallback-2
-- https://www.youtube.com/watch?v=MxIPQZ64x0I&list=PLApy4UwQM3UrZsBTY111R6P4frt6WK-G2&index=4
+- [Demo.tsx](./src/react-hooks-useCallback/Demo.tsx)
+- [Search.tsx](./src/react-hooks-useCallback/Search.tsx)
 
 ## useCallback vs useMemo
 
@@ -47,3 +43,9 @@ const cachedValue = useMemo(calculateValue, dependencies);
 - preventing unnecessary re-renders.
 - `useCallback` memoizes a function.
 - `useMemo` memoizes a value.
+
+## Reference:
+
+- https://react.dev/reference/react/useCallback
+- https://react.dev/reference/react/memo
+- https://www.youtube.com/watch?v=MxIPQZ64x0I&list=PLApy4UwQM3UrZsBTY111R6P4frt6WK-G2&index=4

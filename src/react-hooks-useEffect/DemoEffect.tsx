@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react';
 
-//interface DemoEffectProps {}
-//Unexpected empty object pattern  no - empty - pattern
-
 export default function DemoEffect() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // The code that we want to run
     console.log('The count is:', count);
-
-    // Optional return function
     return () => {
+      //Destory itself and then recreated with new value.
       console.log('I am being cleaned up!');
     };
-  }, [count]); // The dependency array
+  }, [count]);
 
   return (
     <div className="tutorial">

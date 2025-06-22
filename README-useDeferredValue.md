@@ -29,8 +29,12 @@ function SearchPage() {
 
 ## Example 1
 
+- [DeferredDemo.tsx](./src/react-hooks-useDeferredValue/example1/DeferredDemo.tsx)
+- [FullName.tsx](./src/react-hooks-useDeferredValue/example1/components/FullName.tsx)
 - http://localhost:3000/deferred-demo1
 
 ## Example 2
 
+- [DeferredDemo2.tsx](./src/react-hooks-useDeferredValue/example2/DeferredDemo2.tsx)
+- [SlowList.tsx](./src/react-hooks-useDeferredValue/example2/SlowList.tsx)
 - http://localhost:3000/deferred-demo2

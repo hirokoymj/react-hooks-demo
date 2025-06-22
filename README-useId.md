@@ -1,7 +1,7 @@
-# Unique IDs
+# useId
 
 - https://react.dev/reference/react/useId
-- `useId` is a React Hook for generating unique IDs
+- Generating unique IDs.
 
 ```js
 const id = useId();
@@ -9,5 +9,6 @@ const id = useId();
 
 ### Example
 
+- [Email.tsx](./src/react-hooks-useId/components/Email.tsx)
+- [DemoIdHook.tsx](./src/react-hooks-useId/DemoIdHook.tsx)
 - http://localhost:3000/useId-demo
-- [Email.js](./src/react-hooks-useId/components/Email.js)
