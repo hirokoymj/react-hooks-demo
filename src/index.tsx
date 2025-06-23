@@ -25,6 +25,8 @@ import BoxDemo from './component-pattern/BoxDemo';
 import EventBubblingDemo from './event-bubbling/EventBubblingDemo';
 import { Counter } from './redux/counter/Counter';
 import { Todo } from './redux/todo/Todo';
+import { UsersView } from './restful-api/example1/UsersView';
+import PostsView from './restful-api/example2/PostsView';
 
 const router = createBrowserRouter([
   {
@@ -99,6 +101,14 @@ const router = createBrowserRouter([
       {
         path: 'redux-todo',
         element: <Todo />,
+      },
+      {
+        path: 'users-view',
+        element: <UsersView />,
+      },
+      {
+        path: 'posts-view',
+        element: <PostsView />,
       },
     ],
   },
