@@ -60,6 +60,13 @@ export default function Root() {
             <li>
               <Link to={`redux-todo`}>Redux - Counters</Link>
             </li>
+            <b>RESTful API</b>
+            <li>
+              <Link to={`users-view`}>Users list</Link>
+            </li>
+            <li>
+              <Link to={`posts-view`}>Posts list</Link>
+            </li>
           </ul>
         </nav>
       </div>
