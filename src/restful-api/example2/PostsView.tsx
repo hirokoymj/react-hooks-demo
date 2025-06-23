@@ -7,7 +7,7 @@ interface Post {
   body: string;
 }
 
-function PostView() {
+function PostsView() {
   const { data: posts, loading, error } = useFetch<Post[]>('https://jsonplaceholder.typicode.com/posts');
 
   if (loading) {
@@ -35,4 +35,4 @@ function PostView() {
     </div>
   );
 }
-export default PostView;
+export default PostsView;

@@ -16,6 +16,12 @@
 - [Counter demo](./README-redux.md#example-1---counter)
 - [Todo demo](./README-redux.md#example-2---todo)
 
+**RESTful API**
+
+- [Example1: GET/POST/PUT/DELETE](https://github.com/hirokoymj/react-hooks-demo/blob/main/README-RESTful.md#example-1---getpostdeleteput)
+
+- [Example 2: GET with useFetch custom hook](https://github.com/hirokoymj/react-hooks-demo/blob/main/README-RESTful.md#example-2---get-with-usefetch-hook)
+
 **Miscellaneous**
 
 - [Composition Pattern](./README-misc.md#composition-pattern)
