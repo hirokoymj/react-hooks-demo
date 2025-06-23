@@ -53,6 +53,13 @@ export default function Root() {
             <li>
               <Link to={`event-bubbling-demo`}>Event bubbling</Link>
             </li>
+            <b>Redux</b>
+            <li>
+              <Link to={`redux-counter`}>Redux - Counters</Link>
+            </li>
+            <li>
+              <Link to={`redux-todo`}>Redux - Counters</Link>
+            </li>
           </ul>
         </nav>
       </div>

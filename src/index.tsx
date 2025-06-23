@@ -1,6 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
+
 import './index.css';
 import Root from './routes/root';
 import ErrorPage from './error-page';
@@ -20,6 +23,8 @@ import DemoTransition from './react-hooks-useTransition/DemoTransition';
 import DemoIdHook from './react-hooks-useId/DemoIdHook';
 import BoxDemo from './component-pattern/BoxDemo';
 import EventBubblingDemo from './event-bubbling/EventBubblingDemo';
+import { Counter } from './redux/counter/Counter';
+import { Todo } from './redux/todo/Todo';
 
 const router = createBrowserRouter([
   {
@@ -87,12 +92,22 @@ const router = createBrowserRouter([
         path: 'event-bubbling-demo',
         element: <EventBubblingDemo />,
       },
+      {
+        path: 'redux-counter',
+        element: <Counter />,
+      },
+      {
+        path: 'redux-todo',
+        element: <Todo />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
