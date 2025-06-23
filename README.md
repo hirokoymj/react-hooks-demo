@@ -9,6 +9,12 @@
 - [useId](./README-useId.md)
 - [Custom Hooks](./README-customHooks.md)
 
+<hr />
+
+**Miscellaneous**
+
+- [Composition Pattern](./README-composition-pattern.md)
+
 #### Run demo
 
 ```js

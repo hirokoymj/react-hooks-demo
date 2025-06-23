@@ -18,6 +18,8 @@ import DeferredDemo from './react-hooks-useDeferredValue/example1/DeferredDemo';
 import DeferredDemo2 from './react-hooks-useDeferredValue/example2/DeferredDemo2';
 import DemoTransition from './react-hooks-useTransition/DemoTransition';
 import DemoIdHook from './react-hooks-useId/DemoIdHook';
+import BoxDemo from './component-pattern/BoxDemo';
+import EventBubblingDemo from './event-bubbling/EventBubblingDemo';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
       {
         path: 'useId-demo',
         element: <DemoIdHook />,
+      },
+      {
+        path: 'box-demo',
+        element: <BoxDemo />,
+      },
+      {
+        path: 'event-bubbling-demo',
+        element: <EventBubblingDemo />,
       },
     ],
   },

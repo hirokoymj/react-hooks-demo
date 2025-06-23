@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 const useConvert = () => {
   const [fahToCel, setFahToCel] = useState(0);
 
-  const execFahToCel = (val: number = 0) => {
+  const execFahToCel = (val: number = 0): void => {
     setFahToCel(Math.ceil(((val - 32) * 5) / 9));
   };
+
   return [fahToCel, execFahToCel] as const;
 };
 
 function TempUnitConvertDemo() {
   const [fahToCel, execFahToCel] = useConvert();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const value = parseInt((e.target as HTMLInputElement).value);
-    console.log(Number.isNaN(value));
+  const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    const value = parseInt(e.currentTarget.value);
     execFahToCel(value);
   };
 

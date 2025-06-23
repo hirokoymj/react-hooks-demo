@@ -46,6 +46,13 @@ export default function Root() {
             <li>
               <Link to={`useId-demo`}>useId</Link>
             </li>
+            <b>Misc</b>
+            <li>
+              <Link to={`box-demo`}>Composition Pattern</Link>
+            </li>
+            <li>
+              <Link to={`event-bubbling-demo`}>Event bubbling</Link>
+            </li>
           </ul>
         </nav>
       </div>
