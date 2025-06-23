@@ -1,4 +1,4 @@
-## Composition Pattern
+# Composition Pattern
 
 - Instead of passing data down as props, you use components as `children` or props to achieve flexibility.
 - https://medium.com/@ignatovich.dm/composition-vs-props-in-react-a-detailed-guide-f9034394cc7a
@@ -15,7 +15,7 @@ function Card({ children }) {
 - [BoxDemo.tsx](./src/component-pattern/BoxDemo.tsx)
 - [Box.tsx](./src/component-pattern/components/Box.tsx)
 
-## Event bubbling
+# Event bubbling
 
 - Use `stopPropagation()` to stop the event bubbling up to a parent element.
 - When clicking on This is child element text, the alert shows twice.
