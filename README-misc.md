@@ -15,31 +15,6 @@ function Card({ children }) {
 - [BoxDemo.tsx](./src/component-pattern/BoxDemo.tsx)
 - [Box.tsx](./src/component-pattern/components/Box.tsx)
 
-```js
-const Box = ({ children }: BoxProps) => {
-  return (
-    <div
-      style={{
-        border: '10px solid black',
-        width: '25vw',
-        margin: '20px',
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-export default Box;
-
-Box.GreenOutline = function BoxGreenOutline({ children }: BoxProps) {
-  return <div style={{ border: '2px solid green', margin: '30px' }}>{children}</div>;
-};
-
-Box.BrownOutline = function BoxBrownOutline({ children }: BoxProps) {
-  return <div style={{ border: '15px solid brown', margin: '10px' }}>{children}</div>;
-};
-```
-
 ## Event bubbling
 
 - Use `stopPropagation()` to stop the event bubbling up to a parent element.
@@ -48,6 +23,7 @@ Box.BrownOutline = function BoxBrownOutline({ children }: BoxProps) {
 #### Example
 
 - [EventBubblingDemo.tsx](./src/event-bubbling/EventBubblingDemo.tsx)
+- http://localhost:3000/event-bubbling-demo
 
 ```js
 const EventBubblingDemo = () => {
