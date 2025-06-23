@@ -13,7 +13,8 @@
 
 **Miscellaneous**
 
-- [Composition Pattern](./README-composition-pattern.md)
+- [Composition Pattern](./README-composition-pattern.md#composition-pattern)
+- [Event bubbling](./README-composition-pattern.md#event-bubbling)
 
 #### Run demo
 
