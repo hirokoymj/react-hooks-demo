@@ -11,6 +11,11 @@
 
 <hr />
 
+**Redux with TypeScript**
+
+- [Counter demo](./README-redux.md#example-1---counter)
+- [Todo demo](./README-redux.md#example-2---todo)
+
 **Miscellaneous**
 
 - [Composition Pattern](./README-misc.md#composition-pattern)
