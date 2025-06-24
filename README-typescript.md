@@ -75,6 +75,7 @@ function getMyCustomer(id: number): MyCustomer | null {
 
 let myCustomer = getCustomer(0);
 console.log(myCustomer?.birthday?.getFullYear()); // ? undefined
+
 //Interception type (&)
 type typeAB = typeA & typeB;
 interface BusinessPartner {
@@ -137,7 +138,6 @@ type Wrapped<T> = { value: T };
 
 const wrappedValue: Wrapped<number> = { value: 10 };
 const wrappedValue2: Wrapped<string> = { value: 'aaa' };
-
 ```
 
 ## References
