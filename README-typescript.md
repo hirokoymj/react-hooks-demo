@@ -75,6 +75,24 @@ function getMyCustomer(id: number): MyCustomer | null {
 
 let myCustomer = getCustomer(0);
 console.log(myCustomer?.birthday?.getFullYear()); // ? undefined
+//Interception type (&)
+type typeAB = typeA & typeB;
+interface BusinessPartner {
+    name: string;
+    credit: number;
+}
+
+interface Identity {
+    id: number;
+    name: string;
+}
+
+interface Contact {
+    email: string;
+    phone: string;
+}
+type Employee = Identity & Contact;
+type Customer = BusinessPartner & Contact;
 ```
 
 ## Generic type
@@ -121,3 +139,11 @@ const wrappedValue: Wrapped<number> = { value: 10 };
 const wrappedValue2: Wrapped<string> = { value: 'aaa' };
 
 ```
+
+## References
+
+- https://www.w3schools.com/typescript/index.php
+- https://www.w3schools.com/typescript/exercise.php?filename=exercise_intro1
+- https://www.youtube.com/watch?v=EcCTIExsqmI&t=400s
+- https://www.youtube.com/watch?v=oiFo2z8ILNo
+- [TypeScript official doc](https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/)
