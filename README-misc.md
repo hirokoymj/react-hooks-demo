@@ -42,3 +42,25 @@ const EventBubblingDemo = () => {
   );
 };
 ```
+
+# Render an array of nested object
+
+- http://localhost:3000/nested-data-view
+- [NestedDataView.tsx](./src/nested-data/NestedDataView.tsx)
+- JSX must have one parent element
+
+```js
+  return (
+    <div>
+      <h2>Demo</h2>
+      {data.map((category) => (
+		  <h2>{category.name}</h2> // ERROR - TWO parent divs inside data.map()
+		  <div>
+			{category.items.map((item)=>(
+			  <p>{item.id}</p>
+		  ))}
+		  </div>
+      ))}
+    </div>
+  );
+```

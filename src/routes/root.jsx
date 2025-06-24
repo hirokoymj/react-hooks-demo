@@ -53,6 +53,9 @@ export default function Root() {
             <li>
               <Link to={`event-bubbling-demo`}>Event bubbling</Link>
             </li>
+            <li>
+              <Link to={`nested-data-view`}>Nested Data View</Link>
+            </li>
             <b>Redux</b>
             <li>
               <Link to={`redux-counter`}>Redux - Counters</Link>
