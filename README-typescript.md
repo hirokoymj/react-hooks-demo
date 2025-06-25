@@ -140,6 +140,69 @@ const wrappedValue: Wrapped<number> = { value: 10 };
 const wrappedValue2: Wrapped<string> = { value: 'aaa' };
 ```
 
+## Q1: - Bad example
+
+- The three states(Loading, Success and Error) are defined as one type using `?` operator.
+- There are multiple Typescript warings.
+
+```js
+type LocationState = {
+  state: 'Loading' | 'Success' | 'Error';
+  coords?: { lat: number; lon: number };
+  error?: { message: string };
+};
+
+function printLocation(location: LocationState) {
+  switch (location.state) {
+    case 'Loading':
+      console.log(location.state);
+      break;
+    case 'Success':
+      console.log(location.coords.lat, location.coords.lon); //Warning
+      break;
+    case 'Error':
+      console.log(location.error.message); //Warning
+      break;
+  }
+}
+```
+
+**Revised**
+
+- The three distinct types were created and combined with `|` operator.
+
+```js
+type LoadingState = {
+  state: 'Loading';
+};
+
+type SuccessState = {
+  state: 'Success';
+  coords: { lat: number; lon: number };
+};
+
+type ErrorState = {
+  state: 'Error';
+  error: { message: string };
+};
+
+type LocationState = LoadingState | SuccessState | ErrorState;
+
+function printLocation(location: LocationState) {
+  switch (location.state) {
+    case 'Loading':
+      console.log(location.state);
+      break;
+    case 'Success':
+      console.log(location.coords.lat, location.coords.lon);
+      break;
+    case 'Error':
+      console.log(location.error.message);
+      break;
+  }
+}
+```
+
 ## References
 
 - https://www.w3schools.com/typescript/index.php
