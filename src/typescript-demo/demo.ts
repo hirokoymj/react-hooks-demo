@@ -51,3 +51,34 @@ function printLocation(location: LocationState) {
       break;
   }
 }
+
+///Type vs Interface = object only
+//
+type UserType = {
+  name: string;
+  age: number;
+};
+interface UserInter {
+  name: string;
+  age: number;
+}
+const user: UserType = {
+  name: 'Hiroko',
+  age: 28,
+};
+
+type SType = string | number;
+const user1: SType = 'Kale';
+const user2: SType = 123;
+
+// No error when User defined twice.
+interface User {
+  name: string;
+  age: number;
+}
+
+interface User {
+  address: string;
+  city: string;
+}
+

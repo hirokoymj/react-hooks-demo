@@ -1,99 +1,90 @@
 # TypeScript
 
 ```js
-//Array
-const names: string[] = []; //string array
-const age: number[] = []; // number array
-const users: readonly string[] = ['Dylan']; //read only
-const users2: [number, string] = [1, 'Mosh']; //Tuples=Fixed length
-const myarray1: (number | string)[] = [1, 2, 'abc']; //Union=OR
-const myarray2: any[] = [1, 2, 'abc', true]; //any
-//An enum is a group of constants
-enum Size {
-  Small = 1, //first member
-  Medium = 2, //second member
-  Large = 3, // third member
-}
-//Function
+//===Array
+// string
+const array1: string[] = [];
+// number
+const array2: number[] = [];
+// Read only
+const array3: readonly string[] = ['Dylan'];
+// Fixed length(Tuples)
+const array4: [number, string] = [1, 'Mosh'];
+// number OR string(Union)
+const array5: (number | string)[] = [1, 2, 'abc'];
+// Generic type
+type ArrayType<T> = T[];
+const numbers: ArrayType<number> = [1, 2, 3, 4];
+const strings: ArrayType<string> = ['Geeks', 'For', 'Geeks'];
+const mixedArr: ArrayType<number | string | boolean> = ['GeeksforGeeks', 1, 2, true, 'TypeScript', false];
+//===Object
+type Employee = {
+  id: number;
+  name: string;
+};
+const employee: Employee = {
+  id: 1,
+  name: 'Mosh',
+};
+//Generic type
+type ObjectType<T> = {
+  data: T;
+};
+const obj1: ObjectType<{ name: string; age: number }> = {
+  data: { name: 'Kale', age: 28 },
+};
+const obj2: ObjectType<{ id: number; zip: number }> = {
+  data: { id: 1, zip: 70581 },
+};
+const obj3: ObjectType<{ bookId: number; title: string }> = {
+  data: { bookId: 1, title: 'MyTitle' },
+};
+//===Function
+// number argument
 function getFirstElement1(array: number[]) {
   return array[0];
 }
-function getFirstElement3(array: (number | string)[]) {
+// number or string argument
+function getFirstElement2(array: (number | string)[]) {
   return array[0];
 }
-//Function Generic
-function getFirstElement<T>(array: T[]) {
+// Generic #1
+function getFirstElement3<T>(array: T[]) {
   return array[0];
 }
-const numbers = [1, 2, 3];
-const firstNum = getFirstElement(numbers);
-
-const strings = ['abc', 'efg'];
-const firstString = getFirstElement(strings);
-
-// Custom type
-type Employee = {
-  readonly id: number;
-  name: string;
-  retire: (date: Date) => void;
-};
-
-let employee: Employee = {
-  id: 1,
-  name: 'Mosh',
-  retire: (date: Date) => {
-    console.log(date);
-  },
-};
-// Literal type = exact value
+const nums = [1, 2, 3];
+const firstNum = getFirstElement3(nums);
+const names = ['abc', 'efg'];
+const firstString = getFirstElement3(names);
+// Generic #2
+function identity<T>(value: T): T {
+  return value;
+}
+//<T> means “this function works with any type.”
+//value: T means “the parameter has the type T.”
+//: T means “Return value”
+const num = identity(42);
+const str = identity('hello');
+//-----
+//===enum = A group of constants
+enum Size {
+  Small = 'S',
+  Medium = 'M',
+  Large = 'L',
+}
+//=== Exact value
 type Quantity = 50 | 100;
-let quantity: 50 | 100 = 100;
-
-//Optional Chaning - ex.1
-type Customer = {
-  birthday: Date;
-};
-
-function getCustomer(id: number): Customer | null {
-  return id === 0 ? null : { birthday: new Date() };
-}
-
-let customer = getCustomer(0);
-console.log(customer?.birthday); // undefined
-
-let customer1 = getCustomer(1);
-console.log(customer1?.birthday); // 2025-05-13T22:38:52.611Z
-
-//Optional Chaning - ex.2
+let quantity: Quantity = 100;
+//let quantity2: Quantity = 20; // Error
+//===Optional Chaning "?"
 type MyCustomer = {
   birthday?: Date;
 };
-
-function getMyCustomer(id: number): MyCustomer | null {
+function getCustomer(id: number): MyCustomer | null {
   return id === 0 ? null : { birthday: new Date() };
 }
-
 let myCustomer = getCustomer(0);
 console.log(myCustomer?.birthday?.getFullYear()); // ? undefined
-
-//Interception type (&)
-type typeAB = typeA & typeB;
-interface BusinessPartner {
-    name: string;
-    credit: number;
-}
-
-interface Identity {
-    id: number;
-    name: string;
-}
-
-interface Contact {
-    email: string;
-    phone: string;
-}
-type Employee = Identity & Contact;
-type Customer = BusinessPartner & Contact;
 ```
 
 ## Generic type
@@ -203,6 +194,41 @@ function printLocation(location: LocationState) {
 }
 ```
 
+## Type vs Interface
+
+- Type is better than Interface because Inteface is defined object only.
+- Type can use an operator - `|&`.
+
+```js
+type UserType = {
+  name: string;
+  age: number;
+};
+interface UserInter {
+  name: string;
+  age: number;
+}
+const user: UserType = {
+  name: 'Hiroko',
+  age: 28,
+};
+
+type SType = string | number;
+const user1: SType = 'Kale';
+const user2: SType = 123;
+
+// No error when User defined twice.
+interface User {
+  name: string;
+  age: number;
+}
+
+interface User {
+  address: string;
+  city: string;
+}
+```
+
 ## References
 
 - https://www.w3schools.com/typescript/index.php
@@ -210,3 +236,4 @@ function printLocation(location: LocationState) {
 - https://www.youtube.com/watch?v=EcCTIExsqmI&t=400s
 - https://www.youtube.com/watch?v=oiFo2z8ILNo
 - [TypeScript official doc](https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/)
+- https://www.youtube.com/watch?v=oiFo2z8ILNo
