@@ -41,6 +41,7 @@ resonse.ok
 const data = await resonse.json()
 
 #3
+Promise - asynchronous function, pending/fullfilled/rejected,
 const promiseA = new Promise((resolve, reject) => {
   resolve(777);
 }).then((val) => console.log('asynchronous logging has val:', val));
