@@ -70,6 +70,13 @@ export default function Root() {
             <li>
               <Link to={`posts-view`}>Posts list</Link>
             </li>
+            <b>React Hook Form</b>
+            <li>
+              <Link to={`react-hook-form`}>React Form 1</Link>
+            </li>
+            <li>
+              <Link to={`react-hook-form2`}>React Form 2</Link>
+            </li>
           </ul>
         </nav>
       </div>

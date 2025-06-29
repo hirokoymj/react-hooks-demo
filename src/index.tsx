@@ -25,9 +25,11 @@ import BoxDemo from './component-pattern/BoxDemo';
 import EventBubblingDemo from './event-bubbling/EventBubblingDemo';
 import { Counter } from './redux/counter/Counter';
 import { Todo } from './redux/todo/Todo';
-import { UsersView } from './restful-api/example1/UsersView';
+import { UsersView } from './restful-api/example1/UsersView1';
 import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
+import DemoForm from './react-hook-form/DemoForm';
+import DemoForm2 from './react-hook-form/DemoForm2';
 
 const router = createBrowserRouter([
   {
@@ -114,6 +116,14 @@ const router = createBrowserRouter([
       {
         path: 'nested-data-view',
         element: <NestedDataView />,
+      },
+      {
+        path: 'react-hook-form',
+        element: <DemoForm />,
+      },
+      {
+        path: 'react-hook-form2',
+        element: <DemoForm2 />,
       },
     ],
   },
