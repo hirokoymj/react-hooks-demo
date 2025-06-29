@@ -31,42 +31,29 @@ export const UsersView = () => {
   //       });
   //   }, []);
 
-  // 06/29/2025 7:51AM
   useEffect(() => {
     setLoading(true);
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.example.com/protected-data');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+    const token = 'aaa';
+    fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to get users data.');
+        return response.json();
+      })
+      .then((data) => {
         setUsers(data);
-      } catch (err: any) {
-        setError(err);
-      } finally {
+      })
+      .catch((e) => {
+        setError(e);
+      })
+      .finally(() => {
         setLoading(false);
-      }
-    };
-
-    fetchData();
+      });
   }, []);
-
-  //Practice 8:10 - 8:13
-  //   useEffect(() => {
-  //     const getData = async () => {
-  //       try {
-  //         const response = await fetch('https://api.example.com/protected-data', { method: 'GET' });
-  //         if (!response.ok) throw new Error(`${response.status}`);
-  //         const data = await response.json();
-  //         setUsers(data);
-  //       } catch (e) {
-  //         console.error(e);
-  //       }
-  //     };
-  //     getData();
-  //     setLoading(false);
-  //   }, []);
 
   const handleDelete = (id: number) => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
