@@ -75,10 +75,7 @@ export default function Root() {
             </li>
             <b>React Hook Form</b>
             <li>
-              <Link to={`react-hook-form`}>React Form 1</Link>
-            </li>
-            <li>
-              <Link to={`react-hook-form2`}>React Form 2</Link>
+              <Link to={`sign-up-form`}>Sign up form</Link>
             </li>
           </ul>
         </nav>

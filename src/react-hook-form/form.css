@@ -1,0 +1,17 @@
+span {
+  color: red;
+}
+
+table,
+tr,
+td {
+  border: 1px solid black;
+}
+
+#signin-form div {
+  margin-bottom: 30px;
+}
+
+#signin-form label {
+  font-weight: bold;
+}

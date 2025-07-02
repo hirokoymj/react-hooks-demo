@@ -29,8 +29,7 @@ import { UsersViewTest } from './restful-api/example1/UsersViewTest';
 import { UsersView } from './restful-api/example1/UsersView';
 import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
-import DemoForm from './react-hook-form/DemoForm';
-import DemoForm2 from './react-hook-form/DemoForm2';
+import { SignUpForm } from './react-hook-form/SignUpForm';
 
 const router = createBrowserRouter([
   {
@@ -123,12 +122,8 @@ const router = createBrowserRouter([
         element: <NestedDataView />,
       },
       {
-        path: 'react-hook-form',
-        element: <DemoForm />,
-      },
-      {
-        path: 'react-hook-form2',
-        element: <DemoForm2 />,
+        path: 'sign-up-form',
+        element: <SignUpForm />,
       },
     ],
   },
