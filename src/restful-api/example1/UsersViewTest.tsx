@@ -5,7 +5,7 @@ interface User {
   name: string;
 }
 
-export const UsersView = () => {
+export const UsersViewTest = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<null | string>(null);
@@ -31,28 +31,20 @@ export const UsersView = () => {
   //       });
   //   }, []);
 
+  //06/29 1:43
   useEffect(() => {
-    setLoading(true);
-    const token = 'aaa';
-    fetch('https://jsonplaceholder.typicode.com/users', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to get users data.');
-        return response.json();
-      })
-      .then((data) => {
+    const getData = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        if (!response.ok) new Error('');
+        const data = await response.json();
         setUsers(data);
-      })
-      .catch((e) => {
-        setError(e);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    getData();
+    setLoading(false);
   }, []);
 
   const handleDelete = (id: number) => {
@@ -132,7 +124,7 @@ export const UsersView = () => {
 
   return (
     <div className="App">
-      <h1>User list</h1>
+      <h1>User list - Coding test</h1>
       <p style={{ color: 'red' }}>{message}</p>
       <div>
         <span>Name:</span>

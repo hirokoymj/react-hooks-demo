@@ -65,7 +65,10 @@ export default function Root() {
             </li>
             <b>RESTful API</b>
             <li>
-              <Link to={`users-view`}>Users list</Link>
+              <Link to={`users-view`}>Users View</Link>
+            </li>
+            <li>
+              <Link to={`users-view-test`}>Users View Test</Link>
             </li>
             <li>
               <Link to={`posts-view`}>Posts list</Link>

@@ -26,6 +26,7 @@
 
 - [Composition Pattern](./README-misc.md#composition-pattern)
 - [Event bubbling](./README-misc.md#event-bubbling)
+- [Render nested array of object](./README_nested.md)
 
 #### Run demo
 

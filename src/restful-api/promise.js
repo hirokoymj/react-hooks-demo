@@ -33,8 +33,8 @@
 //     getData();
 //   }, []);
 //Practice 06/29 8:04AM - 08:09,
+//Practice 8:10 - 8:13
 //   useEffect(() => {
-//     setLoading(true);
 //     const getData = async () => {
 //       try {
 //         const response = await fetch('https://api.example.com/protected-data', { method: 'GET' });
@@ -42,7 +42,7 @@
 //         const data = await response.json();
 //         setUsers(data);
 //       } catch (e) {
-//         console.log(e);
+//         console.error(e);
 //       }
 //     };
 //     getData();
