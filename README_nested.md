@@ -8,8 +8,6 @@
 ```js
 data.map((d) => (
   <div key={d.id}>
-    {' '}
-    // Parent Div
     {d.items.map((item) => (
       <p id={item.id}>{item.name}</p>
     ))}
