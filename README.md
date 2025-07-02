@@ -28,6 +28,10 @@
 - [Event bubbling](./README-misc.md#event-bubbling)
 - [Render nested array of object](./README_nested.md)
 
+**React Hook Form**
+
+- [React Hook Form demo](./README-React-hook-form.md)
+
 #### Run demo
 
 ```js
