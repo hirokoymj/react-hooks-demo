@@ -77,6 +77,13 @@ export default function Root() {
             <li>
               <Link to={`sign-up-form`}>Sign up form</Link>
             </li>
+            <b>GraphQL</b>
+            <li>
+              <Link to={`category-list`}>GraphQL useQuery</Link>
+            </li>
+            <li>
+              <Link to={`create-category`}>GraphQL useMutation</Link>
+            </li>
           </ul>
         </nav>
       </div>

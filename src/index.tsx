@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from './redux/store';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import './index.css';
 import Root from './routes/root';
@@ -30,6 +31,7 @@ import { UsersView } from './restful-api/example1/UsersView';
 import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
 import { SignUpForm } from './react-hook-form/SignUpForm';
+import { CategoryList, OneCategory, CreateCategory } from './graphQL/CategoryList';
 
 const router = createBrowserRouter([
   {
@@ -125,14 +127,33 @@ const router = createBrowserRouter([
         path: 'sign-up-form',
         element: <SignUpForm />,
       },
+      {
+        path: 'category-list',
+        element: <CategoryList />,
+      },
+      {
+        path: 'category-one',
+        element: <OneCategory />,
+      },
+      {
+        path: 'create-category',
+        element: <CreateCategory />,
+      },
     ],
   },
 ]);
 
+const client = new ApolloClient({
+  uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <ApolloProvider client={client}>
+      <ReduxProvider store={store}>
+        <RouterProvider router={router} />
+      </ReduxProvider>
+    </ApolloProvider>
   </React.StrictMode>,
 );
