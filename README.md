@@ -37,3 +37,28 @@
 ```js
 npm run start
 ```
+
+## Memory note
+
+- useCallback
+- useMemo
+- useEffect - mount, unmount, guarantee to call at least once.
+- useState
+- useForm
+
+```js
+const { register, handleSubmit } = useForm<IFormInput>()
+const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+<form onSubmit={handleSubmit(onSubmit)}>
+<input {...register("firstName")} />
+<select {...register("gender")}>
+<input type="submit" />
+```
+
+- https://react-hook-form.com/get-started#Registerfields
+- useParams()
+
+```js
+<Route path=":userId" element={<ProfilePage />} />;
+const { userId } = useParams();
+```

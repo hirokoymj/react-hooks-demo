@@ -55,3 +55,7 @@ export function Dashboard() {
   return <div>{user.name}</div>;
 }
 ```
+
+## References
+
+- https://www.youtube.com/watch?v=HYKDUF8X3qI
