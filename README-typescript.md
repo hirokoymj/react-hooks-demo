@@ -1,6 +1,13 @@
 # TypeScript
 
 ```js
+//===Primitive type
+let a: number = 1;
+let b: string = 'abc';
+type SType = string | number;
+const user: SType = 'aaaa';
+const categoryId: SType = 7777;
+
 //===Array
 // string array
 const array1: string[] = [];
@@ -17,6 +24,7 @@ type ArrayType<T> = T[];
 const numbers: ArrayType<number> = [1, 2, 3, 4];
 const strings: ArrayType<string> = ['Geeks', 'For', 'Geeks'];
 const mixedArr: ArrayType<number | string | boolean> = ['GeeksforGeeks', 1, 2, true, 'TypeScript', false];
+
 //===Object
 // type
 type UserType = {
@@ -45,6 +53,7 @@ const obj2: ObjectType<{ id: number; zip: number }> = {
 const obj3: ObjectType<{ id: number; title: string }> = {
   data: { id: 1, title: 'MyTitle' },
 };
+
 //===Function
 // A number array param.
 function getFirstElement1(array: number[]) {
