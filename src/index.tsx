@@ -32,6 +32,8 @@ import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
 import { SignUpForm } from './react-hook-form/SignUpForm';
 import { CategoryList, OneCategory, CreateCategory } from './graphQL/CategoryList';
+import ComponentTest from './components/ComponentTest';
+import MyContextDemo from './react-hooks-useContext/index';
 
 const router = createBrowserRouter([
   {
@@ -138,6 +140,14 @@ const router = createBrowserRouter([
       {
         path: 'create-category',
         element: <CreateCategory />,
+      },
+      {
+        path: 'component-test',
+        element: <ComponentTest />,
+      },
+      {
+        path: 'context-demo',
+        element: <MyContextDemo />,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { useQuery, useMutation } from '@apollo/client';
-//import get from 'lodash/get';
+import { Logo } from '../components/Logo/Logo';
 
 export const CATEGORY_BY_ID = gql`
   query Category_By_Id($id: ID!) {
@@ -58,6 +58,8 @@ type CreateCategoryData = {
   createCategory: Category;
 };
 
+//type CategoryData = CategoryAllData | CategoryByIdData | CreateCategoryData;
+
 export const CategoryList = () => {
   const { data, loading, error } = useQuery<CategoryAllData>(CATEGORY_ALL);
   console.log(data);
@@ -65,8 +67,9 @@ export const CategoryList = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
+    <div style={{ background: 'lime' }}>
       <h1>Category List</h1>
+      <Logo />
       {loading ? <p>Loading...</p> : <div>{data?.categoryAll.map((d) => <p key={d.id}>{d.id}</p>)}</div>}
     </div>
   );
@@ -87,17 +90,20 @@ export const OneCategory = () => {
     </div>
   );
 };
-
+//https://www.apollographql.com/docs/react/data/mutations
 export const CreateCategory = () => {
-  const [createCategory, { data, loading, error }] = useMutation<CreateCategoryData>(CREATE_CATEGORY);
+  const { data: c_data, loading: c_loading, error: c_error } = useQuery<CategoryAllData>(CATEGORY_ALL);
+  const [createCategory, { data, loading, error }] = useMutation<CreateCategoryData>(CREATE_CATEGORY, {
+    refetchQueries: [CATEGORY_ALL],
+  });
 
   const handleClick = async () => {
     try {
       await createCategory({
         variables: {
           input: {
-            name: 'TEST-1',
-            abbr: 'test-1',
+            name: 'TEST-777',
+            abbr: 'test-777',
           },
         },
       });
@@ -114,14 +120,31 @@ export const CreateCategory = () => {
       <h1>Mutation TEST</h1>
       <button onClick={handleClick}>Add category</button>
       <hr />
-      {data && (
-        <div>
-          <h1>New Category has been created.</h1>
-          <p>{data?.createCategory.id}</p>
-          <p>{data?.createCategory.name}</p>
-          <p>{data?.createCategory.abbr}</p>
-        </div>
-      )}
+      <div>
+        <h1>NEW Category</h1>
+        {data && (
+          <div>
+            <h1>New Category has been created.</h1>
+            <p>{data?.createCategory.id}</p>
+            <p>{data?.createCategory.name}</p>
+            <p>{data?.createCategory.abbr}</p>
+          </div>
+        )}
+      </div>
+      <div>
+        <h1>Category List</h1>
+        {c_loading || c_error ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            {c_data?.categoryAll.map((d: Category) => (
+              <p key={d.id}>
+                {d.id}, {d.name}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 };
