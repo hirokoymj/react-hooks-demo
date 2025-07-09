@@ -8,9 +8,9 @@ export interface User {
   name: string;
 }
 
-interface DemoProps {}
+//interface DemoProps {}
 
-export default function MyContextDemo({}: DemoProps) {
+export default function MyContextDemo() {
   const [user] = useState<User>({
     isSubscribed: true,
     name: 'You',
