@@ -1,0 +1,66 @@
+import { gql, useQuery } from '@apollo/client';
+import { useParams, Link } from 'react-router-dom';
+
+const GET_DOGS = gql`
+  query GetDogs {
+    dogs {
+      id
+      breed
+    }
+  }
+`;
+const GET_DOG_PHOTO = gql`
+  query Dog($breed: String!) {
+    dog(breed: $breed) {
+      id
+      displayImage
+    }
+  }
+`;
+export const Dogs = () => {
+  const { loading, error, data } = useQuery(GET_DOGS, {
+    context: {
+      clientName: 'dogApi',
+    },
+  });
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  console.log('dogs');
+  console.log(data);
+
+  return (
+    <>
+      <h1>Dog API</h1>
+      <h1>Dog API</h1>
+      <h1>Dog API</h1>
+      <ul>
+        {data.dogs.map((dog: any) => (
+          <p key={dog.id}>
+            <Link to={`${dog.breed}`}>{dog.breed}</Link>
+          </p>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export const DogDetail = () => {
+  let { breed } = useParams();
+  console.log(breed);
+  const { loading, error, data } = useQuery(GET_DOG_PHOTO, {
+    variables: { breed },
+    context: { clientName: 'dogApi' },
+  });
+
+  if (loading) return null;
+  if (error) return `Error! ${error}`;
+  console.log(data);
+
+  return (
+    <div>
+      <h1>Dog name: {breed}</h1>
+      <img src={data.dog.displayImage} style={{ height: 200, width: 200 }} />
+    </div>
+  );
+};

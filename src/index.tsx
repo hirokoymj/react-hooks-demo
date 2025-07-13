@@ -3,7 +3,8 @@ import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from './redux/store';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+//import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink, ApolloLink, ApolloProvider } from '@apollo/client';
 
 import './index.css';
 import Root from './routes/root';
@@ -32,8 +33,12 @@ import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
 import { SignUpForm } from './react-hook-form/SignUpForm';
 import { CategoryList, OneCategory, CreateCategory } from './graphQL/CategoryList';
+//import { DisplayLocations, DisplaySingleLocation } from './graphQL/DisplayLocations';
+//import { Dogs, DogDetail } from './graphQL/Dogs';
+import { SpaceXDemo } from './graphQL/SpaceXDemo';
 import ComponentTest from './components/ComponentTest';
 import MyContextDemo from './react-hooks-useContext/index';
+import Contact from './routes/contact';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +46,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: 'contacts/:contactId',
+        element: <Contact />,
+      },
       {
         path: 'memo1',
         element: <Demo1 />,
@@ -149,12 +158,62 @@ const router = createBrowserRouter([
         path: 'context-demo',
         element: <MyContextDemo />,
       },
+      //   {
+      //     path: 'quick-start',
+      //     element: <DisplayLocations />,
+      //   },
+      //   {
+      //     path: 'quick-start/:locationId',
+      //     element: <DisplaySingleLocation />,
+      //   },
+      //   {
+      //     path: 'dogs',
+      //     element: <Dogs />,
+      //   },
+      //   {
+      //     path: 'dogs/:breed',
+      //     element: <DogDetail />,
+      //   },
+      {
+        path: 'spacex',
+        element: <SpaceXDemo />,
+      },
     ],
   },
 ]);
 
-const client = new ApolloClient({
+// const client = new ApolloClient({
+//   uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+//   cache: new InMemoryCache(),
+// });
+// const client = new ApolloClient({
+//   uri: 'https://flyby-router-demo.herokuapp.com/',
+//   cache: new InMemoryCache(),
+// });
+// const client = new ApolloClient({
+//   uri: 'https://71z1g-4000.csb.app/',
+//   cache: new InMemoryCache(),
+// });
+
+// Create your HttpLink instances for each endpoint
+const endpoint1Link = new HttpLink({
   uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+});
+
+const endpoint2Link = new HttpLink({
+  //uri: 'https://71z1g-4000.csb.app/',
+  uri: 'https://spacex-production.up.railway.app/',
+});
+
+const directionalLink = ApolloLink.split(
+  (operation) => operation.getContext().clientName === 'spaceXApi',
+  endpoint2Link, // The "left" link (used if the test is true)
+  endpoint1Link, // The "right" link (used if the test is false)
+);
+
+// Create the Apollo Client with the directional link
+const client = new ApolloClient({
+  link: directionalLink,
   cache: new InMemoryCache(),
 });
 

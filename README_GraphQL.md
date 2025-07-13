@@ -1,69 +1,42 @@
 # Apollo Client
 
-```txt
-const { data, loading, error } = useQuery<CategoryAllData>(CATEGORY_ALL);
-const { data, loading, error } = useQuery<CategoryByIdData>(CATEGORY_BY_ID, {
-	variables: { id: '5fec597e5e17e200170e0ffe' },
-});
-const [createCategory, { data, loading, error }] = useMutation<CreateCategoryData>(CREATE_CATEGORY, {
-	refetchQueries: [CATEGORY_ALL],
-});
+```js
+const { data, loading, error } = useQuery(QUERY, { OPTION });
+const [mutationFunc, { data, loading, error }] = useMutation(MUTATION, { OPTION });
+const [createCategory, { data, loading, error }] = useMutation(MUTATION, { OPTION });
+await mutatinoFunc({});
+await createCategory({});
 ```
+
+- useQuery: Run automatically.
+- useMutation: A mutationFunc runs by a user action.
 
 ```js
-interface Category {
-  id: string;
-  name: string;
-  abbr: string;
-}
-
-type CategoryAllData = {
-  categoryAll: Category[];
-};
-type CategoryByIdData = {
-  categoryById: Category;
-};
-type CreateCategoryData = {
-  createCategory: Category;
+const onSubmit = async () => {
+  try {
+    await createCategory({
+      variables: {
+        input: {
+          name: 'TEST-777',
+        },
+      },
+    });
+  } catch (e) {}
 };
 ```
 
-```js
-export const CATEGORY_BY_ID = gql`
-  query Category_By_Id($id: ID!) {
-    categoryById(id: $id) {
-      id
-      name
-      abbr
-      order
-      createdAt
-      updatedAt
-    }
-  }
-`;
+**Options**
 
-export const CATEGORY_ALL = gql`
-  query CategoryAll {
-    categoryAll {
-      id
-      name
-      abbr
-      createdAt
-      updatedAt
-    }
-  }
-`;
+- variables:{}
+- refetchQueries: [QUERY]
+- context: { clientName: 'spaceXApi' },
+- fetchPolicy: 'cache-first' | 'network-only'
 
-export const CREATE_CATEGORY = gql`
-  mutation CreateCategory($input: createCategoryInput!) {
-    createCategory(input: $input) {
-      id
-      name
-      abbr
-      order
-      createdAt
-      updatedAt
-    }
-  }
-`;
-```
+## References:
+
+- https://www.apollographql.com/docs/react/data/mutations
+- [Apollo GraphQL for VS Code](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo)
+- [Odyssey Client-side GraphQL with React & Apollo
+  ](https://www.apollographql.com/tutorials/client-side-graphql-react/01-feature-overview-and-setup)
+
+- https://www.apollographql.com/tutorials/client-side-graphql-react/01-feature-overview-and-setup
