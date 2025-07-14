@@ -39,6 +39,7 @@ import { SpaceXDemo } from './graphQL/SpaceXDemo';
 import ComponentTest from './components/ComponentTest';
 import MyContextDemo from './react-hooks-useContext/index';
 import Contact from './routes/contact';
+import Tracks from './graphQL/pages/Tracks';
 
 const router = createBrowserRouter([
   {
@@ -178,6 +179,10 @@ const router = createBrowserRouter([
         path: 'spacex',
         element: <SpaceXDemo />,
       },
+      {
+        path: 'tracks',
+        element: <Tracks />,
+      },
     ],
   },
 ]);
@@ -202,11 +207,12 @@ const endpoint1Link = new HttpLink({
 
 const endpoint2Link = new HttpLink({
   //uri: 'https://71z1g-4000.csb.app/',
-  uri: 'https://spacex-production.up.railway.app/',
+  //uri: 'https://spacex-production.up.railway.app/',
+  uri: 'https://odyssey-lift-off-server.herokuapp.com/',
 });
 
 const directionalLink = ApolloLink.split(
-  (operation) => operation.getContext().clientName === 'spaceXApi',
+  (operation) => operation.getContext().clientName === 'odeysseyApi',
   endpoint2Link, // The "left" link (used if the test is true)
   endpoint1Link, // The "right" link (used if the test is false)
 );

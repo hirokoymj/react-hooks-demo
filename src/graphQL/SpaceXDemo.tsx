@@ -41,3 +41,6 @@ export const SpaceXDemo = () => {
 };
 
 export default SpaceXDemo;
+
+//https://www.youtube.com/watch?v=_DhYAk4Iy-0
+//https://studio.apollographql.com/sandbox/explorer/?
