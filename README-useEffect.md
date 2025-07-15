@@ -6,17 +6,12 @@
 - https://react.dev/reference/react/useEffect
 
 ```js
-//Syntax
 useEffect(setup, dependencies?)
 
-// useEffect calls at least when a component is mount. = at least once guarantee.
-useEffect(()=>{}, [])
-
-// useEffect calls whenever dependency array changes.
-useEffect(()=>{}, [count])
-
-// useEffect will destroy itself and then re-created.
-useEffect(()=>{return () => {console.log('I am being cleaned up!');};}, [count]) //Ex. Reset setInterval().
+useEffect(()=>{}) // Without a dependency array - executes every render happens.
+useEffect(()=>{}, []) //only run once, after the initial render of the component. == componentDidMount
+useEffect(()=>{}, [count])// Calls whenever dependencies change.
+useEffect(()=>{return () => {};}, [count]) // return function => Calls when a component is unmount.
 ```
 
 ### Example 1

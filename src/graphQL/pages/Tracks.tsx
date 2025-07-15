@@ -1,8 +1,6 @@
-//import { gql } from '../__generated__/';
 import { gql } from '../../__generated__';
 import { useQuery } from '@apollo/client';
 
-/** GET_TRACKS query to retrieve all tracks */
 const GET_TRACKS = gql(`
   query GetTracks {
     tracksForHome {
