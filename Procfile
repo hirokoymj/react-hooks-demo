@@ -1,1 +1,1 @@
-web: npm install --force && npm start
+web: npm start
