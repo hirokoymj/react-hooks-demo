@@ -40,8 +40,6 @@ import ComponentTest from './components/ComponentTest';
 import MyContextDemo from './react-hooks-useContext/index';
 import Contact from './routes/contact';
 import Tracks from './graphQL/pages/Tracks';
-console.log('print ENV variable------------');
-console.log(import.meta.env.VITE_GOOGLE_MAP_API_KEY);
 
 const router = createBrowserRouter([
   {

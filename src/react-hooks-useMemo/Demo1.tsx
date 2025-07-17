@@ -12,6 +12,9 @@ const Demo1 = () => {
   //   }
   //   return counter + result;
   // }
+  const someKey = import.meta.env.VITE_SOME_KEY;
+
+  console.log(`PRINT ENV : ${someKey}`); // "123"
 
   const bigCalculationResult = useMemo(() => {
     console.log('From bigCalculation');
@@ -37,6 +40,7 @@ const Demo1 = () => {
       {bigCalculationResult}
       <br />
       <button onClick={increase}>Increment</button>
+      <h1>{someKey}</h1>
     </div>
   );
 };

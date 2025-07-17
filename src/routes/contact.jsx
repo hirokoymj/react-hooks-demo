@@ -12,6 +12,10 @@ export default function Contact() {
     favorite: true,
   };
 
+  console.log('pring env variable----');
+  console.log(import.meta.env.VITE_SOME_KEY); // "123"
+  console.log(process.env.VITE_SOME_KEY);
+
   return (
     <div id="contact">
       <div>
