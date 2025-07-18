@@ -12,9 +12,7 @@ const Demo1 = () => {
   //   }
   //   return counter + result;
   // }
-  const someKey = import.meta.env.VITE_SOME_KEY;
-
-  console.log(`PRINT ENV : ${someKey}`); // "123"
+  const appTitle = import.meta.env.VITE_APP_TITLE;
 
   const bigCalculationResult = useMemo(() => {
     console.log('From bigCalculation');
@@ -31,6 +29,7 @@ const Demo1 = () => {
 
   return (
     <div style={{ border: '10px solid black' }}>
+      <h1>{appTitle}</h1>
       <p style={{ color: `${color}`, fontSize: '2rem' }}>This is App component</p>
       <button onClick={() => setColor('red')}>Change color</button>
       <br />
@@ -40,7 +39,6 @@ const Demo1 = () => {
       {bigCalculationResult}
       <br />
       <button onClick={increase}>Increment</button>
-      <h1>{someKey}</h1>
     </div>
   );
 };
