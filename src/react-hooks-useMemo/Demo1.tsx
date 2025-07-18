@@ -12,7 +12,8 @@ const Demo1 = () => {
   //   }
   //   return counter + result;
   // }
-  const appTitle = import.meta.env.VITE_APP_TITLE;
+  const apiKey = process.env.API_KEY;
+  console.log(apiKey);
 
   const bigCalculationResult = useMemo(() => {
     console.log('From bigCalculation');
@@ -29,7 +30,7 @@ const Demo1 = () => {
 
   return (
     <div style={{ border: '10px solid black' }}>
-      <h1>{appTitle}</h1>
+      <h1>{apiKey}</h1>
       <p style={{ color: `${color}`, fontSize: '2rem' }}>This is App component</p>
       <button onClick={() => setColor('red')}>Change color</button>
       <br />
