@@ -31,7 +31,7 @@ const Demo1 = () => {
   return (
     <div style={{ border: '10px solid black' }}>
       <h1>{apiKey}</h1>
-      <p style={{ color: `${color}`, fontSize: '2rem' }}>This is App component</p>
+      <p style={{ color: `${color}`, fontSize: '2rem' }}>This is App component on 07/17</p>
       <button onClick={() => setColor('red')}>Change color</button>
       <br />
       Counter: {counter}
