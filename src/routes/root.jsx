@@ -84,6 +84,9 @@ export default function Root() {
             <li>
               <Link to={`create-category`}>GraphQL useMutation</Link>
             </li>
+            <li>
+              <Link to={`spacex`}>Space X demo</Link>
+            </li>
             <b>Context</b>
             <li>
               <Link to={`context-demo`}>Context Demo</Link>

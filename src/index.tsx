@@ -207,12 +207,11 @@ const endpoint1Link = new HttpLink({
 
 const endpoint2Link = new HttpLink({
   //uri: 'https://71z1g-4000.csb.app/',
-  //uri: 'https://spacex-production.up.railway.app/',
-  uri: 'https://odyssey-lift-off-server.herokuapp.com/',
+  uri: 'https://spacex-production.up.railway.app/',
 });
 
 const directionalLink = ApolloLink.split(
-  (operation) => operation.getContext().clientName === 'odeysseyApi',
+  (operation) => operation.getContext().clientName === 'spaceXApi',
   endpoint2Link, // The "left" link (used if the test is true)
   endpoint1Link, // The "right" link (used if the test is false)
 );
