@@ -14,13 +14,12 @@ const LIST_LAUNCHES = gql`
 const PAGE_SIZE = 10;
 const total_items = 187;
 const totalPage = Math.ceil(total_items / PAGE_SIZE);
-console.log('total page=' + totalPage);
 
 export const SpaceXDemo = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const { data, loading, error } = useQuery(LIST_LAUNCHES, {
     context: { clientName: 'spaceXApi' },
-    variables: { limit: PAGE_SIZE, offset: PAGE_SIZE * page },
+    variables: { limit: PAGE_SIZE, offset: PAGE_SIZE * (page - 1) },
   });
 
   if (loading) return <div>...Loading</div>;
@@ -32,14 +31,14 @@ export const SpaceXDemo = () => {
 
   return (
     <>
-      <h2>Recent lanches</h2>
-      <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <h2>Space X API - Recent lanches</h2>
+      {/* <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
         <button disabled={!page} onClick={() => setPage((prev) => prev - 1)}>
           Previous
         </button>
         <span>Page: {page + 1}</span>
         <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-      </nav>
+      </nav> */}
       <div>
         {data.launchesPast.map((launch: any) => (
           <li key={launch.id}>{launch.mission_name}</li>
@@ -50,14 +49,16 @@ export const SpaceXDemo = () => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          border: '1px solid red',
           alignItems: 'center',
           flexDirection: 'column',
         }}
       >
-        <Typography>Page: {page + 1}</Typography>
-        <Typography>Offset: {PAGE_SIZE * page}</Typography>
-        <Pagination count={totalPage} page={page + 1} onChange={handleChange} color="primary" />
+        <Typography>PAGE_SIZE: {PAGE_SIZE}</Typography>
+        <Typography>total_items: {total_items}</Typography>
+        <Typography>totalPage: {totalPage}</Typography>
+        <Typography>Page: {page}</Typography>
+        <Typography>Offset: {PAGE_SIZE * (page - 1)}</Typography>
+        <Pagination count={totalPage} page={page} onChange={handleChange} color="primary" />
       </div>
     </>
   );
