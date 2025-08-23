@@ -32,7 +32,8 @@ import { UsersView } from './restful-api/example1/UsersView';
 import PostsView from './restful-api/example2/PostsView';
 import { NestedDataView } from './nested-data/NestedDataView';
 import { SignUpForm } from './react-hook-form/SignUpForm';
-import { CategoryList, OneCategory, CreateCategory } from './graphQL/CategoryList';
+//import { CategoryList, OneCategory, CreateCategory } from './graphQL/CategoryList';
+import { CategoryList } from './graphQL/CategoryList';
 //import { DisplayLocations, DisplaySingleLocation } from './graphQL/DisplayLocations';
 //import { Dogs, DogDetail } from './graphQL/Dogs';
 import { SpaceXDemo } from './graphQL/SpaceXDemo';
@@ -143,14 +144,14 @@ const router = createBrowserRouter([
         path: 'category-list',
         element: <CategoryList />,
       },
-      {
-        path: 'category-one',
-        element: <OneCategory />,
-      },
-      {
-        path: 'create-category',
-        element: <CreateCategory />,
-      },
+      //   {
+      //     path: 'category-one',
+      //     element: <OneCategory />,
+      //   },
+      //   {
+      //     path: 'create-category',
+      //     element: <CreateCategory />,
+      //   },
       {
         path: 'component-test',
         element: <ComponentTest />,
@@ -187,22 +188,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-// const client = new ApolloClient({
-//   uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
-//   cache: new InMemoryCache(),
-// });
-// const client = new ApolloClient({
-//   uri: 'https://flyby-router-demo.herokuapp.com/',
-//   cache: new InMemoryCache(),
-// });
-// const client = new ApolloClient({
-//   uri: 'https://71z1g-4000.csb.app/',
-//   cache: new InMemoryCache(),
-// });
-
-// Create your HttpLink instances for each endpoint
 const endpoint1Link = new HttpLink({
-  uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+  //  uri: 'https://hiroko-web-backend-new-08d39ee2590b.herokuapp.com/',
+  uri: 'http://localhost:4000/',
 });
 
 const endpoint2Link = new HttpLink({

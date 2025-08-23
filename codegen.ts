@@ -1,8 +1,8 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: 'https://odyssey-lift-off-server.herokuapp.com/',
-  documents: ['src/GraphQL/pages/*.tsx'],
+  schema: 'http://localhost:4000/',
+  documents: ['src/GraphQL/query/*.ts'],
   generates: {
     './src/__generated__/': {
       preset: 'client',
