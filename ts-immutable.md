@@ -4,10 +4,12 @@
 - readonly -> primitive -> readonly
 - readonly -> Object and Array -> readonly, readonly
 - `Readonly` Utility type
+- function doubleScore(person: Readonly<PersonScore>) {}
+- const bill = {} as const
 
 ## Understanding the `readonly` modifier
 
-- Ex1
+**Ex1**
 
 ```js
 type Person = {
@@ -23,7 +25,9 @@ bob.age = 31; //?
 
 - Answer: The TypeScript compiler will complain because age can’t be changed after it is initially assigned its value.
 
-- Ex2
+<hr />
+
+**Ex2**
 
 ```js
 class Vehicle {
@@ -51,7 +55,7 @@ type TypeName = {
 };
 ```
 
-- EX1
+**EX1**
 
 ```js
 interface Result {
@@ -78,8 +82,11 @@ interface Result {
 billScores.profile.level = 2; //immutable
 ```
 
-- Ex3 - Readonly utility type
-- `type ReadonlyType = Readonly<ExistingType>`
+<hr />
+
+**Ex3 - Readonly utility type**
+
+- `Readonly`
 
 ```ts
 interface Result {
@@ -98,29 +105,6 @@ let billScores: Readonly<Result> = {
 };
 
 billScores.name = 'Bob';
-```
-
-## Summary
-
-```js
-interface Result {
-  name: string;
-  readonly scores: readonly number[];
-  readonly profile: {
-    readonly level: number;
-  };
-}
-let billScores: Result = {
-  name: "Bill",
-  scores: [90, 65, 80],
-  profile: {
-    level: 1,
-  },
-};
-
-billScores.scores.push(70); //ERROR
-console.log(billScores);
-billScores.profile.level = 2; //ERROR
 ```
 
 ## Creating readonly array parameters
