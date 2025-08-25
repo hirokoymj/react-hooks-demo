@@ -107,51 +107,6 @@ function logName<T extends {name: string}>(object: T) {
 
 - A generic parameter with a constraint containing a name property can be used to make the function more strongly-typed.
 
-## Type Narrowing
-
-- https://learntypescript.dev/07/l9-quiz
-- Q2.What is the type of level in the console.log statement below:
-
-```js
-type Level = "low" | "medium" | "high";
-function logLevel(level: Level) {
-  if (level === "high") {
-    console.warn(level);
-  }
-}
-```
-
-- The type is narrowed to 'high'.
-
-<hr />
-
-Q4. What type guards can we use to check animal is of type Dog?
-
-```js
-
-class Dog {
-  woff() {
-    console.log("woff")
-  }
-}
-class Cat {
-  meow() {
-    console.log("meow")
-  }
-}
-function speak(animal: Dog | Cat) {
-  if (/* TODO: check if type is Dog */) {
-    animal.woff();
-  } else {
-    animal.meow();
-  }
-}
-```
-
-- animal instanceof Dog
-- 'woff' in animal
-- The instanceof type guard is a good choice because the code is checking a class instance. The in type guard also works in this case because the woff member can distinguish between the Dog and Cat types.
-
 ## Mapped Types
 
 https://learntypescript.dev/08/l5-quiz
