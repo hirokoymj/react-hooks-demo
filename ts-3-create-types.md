@@ -157,3 +157,65 @@ level = "4"; //ERROR
 - We have the following type:
 
 - A bestBeforeDate doesn't apply to every product though. So, we want to allow this to be null or a date. What type best represents this?
+
+# TS Playground
+
+```ts
+//=============================================
+//Question 1: - Create object
+type Score = {
+  name: string;
+  score: number;
+};
+const tomScore: Score = {
+  name: 'Tom',
+  score: 70,
+};
+//=============================================
+//Question 2: - Create object with nested
+type CatName = 'miffy' | 'boris' | 'mordred';
+
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+
+const cats: Record<CatName, CatInfo> = {
+  miffy: { age: 10, breed: 'Persian' },
+  boris: { age: 5, breed: 'Maine Coon' },
+  mordred: { age: 16, breed: 'British Shorthair' },
+};
+//=============================================
+//Question 3: - Create object with utility type
+interface User {
+  type: 'user';
+  name: string;
+  age: number;
+  occupation: string;
+}
+
+interface Admin {
+  type: 'admin';
+  name: string;
+  age: number;
+  role: string;
+}
+
+type PowerUser = Omit<User, 'type'> & Omit<Admin, 'type'> & { type: 'powerUser' };
+
+export type Person = User | Admin | PowerUser;
+
+export const persons: Person[] = [
+  { type: 'user', name: 'Max Mustermann', age: 25, occupation: 'Chimney sweep' },
+  { type: 'admin', name: 'Jane Doe', age: 32, role: 'Administrator' },
+  { type: 'user', name: 'Kate Müller', age: 23, occupation: 'Astronaut' },
+  { type: 'admin', name: 'Bruce Willis', age: 64, role: 'World saver' },
+  {
+    type: 'powerUser',
+    name: 'Nikki Stone',
+    age: 45,
+    role: 'Moderator',
+    occupation: 'Cat groomer',
+  },
+];
+```
