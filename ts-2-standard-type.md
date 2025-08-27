@@ -1,10 +1,10 @@
 # Standard types
 
 - Date: function calculateRenewal(startDate: Date): Date {}
+- Array: Array<Contact | number | string>, number[]
 - any:
-- void: function return types
-- Array:
 - unknown
+- void: function return types
 - never
 
 ## Using the Date type
@@ -148,7 +148,7 @@ function isPerson(person: any): person is Person {
 
 ## Quiz
 
-- https://learntypescript.dev/05/l5-quiz
+- https://learntypescript.dev/03/l7-unknown
 
 **Question 2.**
 
@@ -180,3 +180,63 @@ function outputMessage(message: string) {
 ```
 
 - A: The never type is used to represent a type of value that will never occur.
+
+# TS Playground
+
+```ts
+//=============================================
+//Question 1:
+//number with Array
+const numbers;
+//number
+const items;
+//string array
+const strings = ['one', 'two', 'three'];
+//Type?
+const array = [1, 2, 3];
+
+//Answer
+const numbers: Array<number> = [1, 2, 3];
+const items: number[] = [1];
+const strings: string[] = ['one', 'two', 'three'];
+const array = [1, 2, 3]; //number[]
+//=============================================
+//Question 2:
+function logScores(firstName, ...scores) {
+  console.log(firstName, scores);
+}
+logScores('Ben', 50, 75, 85); // outputs Ben and [50, 75, 85]
+
+//Answer
+function logScores(firstName: string, ...scores: number[]) {}
+//=============================================
+//Question 3:
+async function getData(path: string): Promise<unknown> {
+  const response = await fetch(path);
+  return await response.json();
+}
+type Person = {
+  id: string;
+  name: string;
+};
+async function getPerson(id: string): Promise<Person | null> {
+  const person = await getData('/people/1');
+  if (person) {
+    return person; //ERROR
+  }
+  return null;
+}
+
+//Answer
+function isPerson(person: any): person is Person {
+  return 'id' in person && 'name' in person;
+}
+
+async function getPerson(id: string): Promise<Person | null> {
+  const person = await getData('/people/1');
+  if (person && isPerson(person)) {
+    return person;
+  }
+  return null;
+}
+```
