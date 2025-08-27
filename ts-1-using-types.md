@@ -49,3 +49,59 @@ function logMessage(message: string) {}
 ```
 
 - A: TypeScript can't infer the type of the message parameter and so a type annotation is needed.
+
+# TS Playground Quiz
+
+```ts
+//=============================================
+//Question 1:
+function calculateRenewal(startDate: any) {
+  const result = new Date(startDate);
+  result.setDate(result.getDate() + 30);
+  return result;
+}
+
+const dateOfBirth = new Date(1990, 4, 7);
+console.log(dateOfBirth.getDate());
+
+//Answer
+function calculateRenewal(startDate: Date) {}
+
+//=============================================
+//Question 2:
+let counter;
+let score = 10;
+let dateOfBirth = new Date(1990, 4, 7);
+
+const firstName = 'Bob';
+const age = 31;
+const created = new Date(2019, 11, 6);
+
+//Answer
+let counter; //any
+let score = 10; //number
+let dateOfBirth = new Date(1990, 4, 7); //Date
+
+const firstName = 'Bob'; //Bob
+const age = 31; //31
+const created = new Date(2019, 11, 6); //Date
+//=============================================
+//Question 3:
+function add(a: number, b: number): number {
+  return a + b;
+}
+add(3); //ERROR
+//Answer
+function add(a: number, b?: number): number {
+  if (b) {
+    return a + b;
+  }
+  return a;
+}
+add(3);
+add(1, 2);
+//=============================================
+//=============================================
+//Question 2:
+//=============================================
+```
