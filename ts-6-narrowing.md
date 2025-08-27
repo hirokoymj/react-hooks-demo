@@ -229,10 +229,4 @@ function sayHello(contact: Contact) {
 function isPerson(contact: Contact): contact is Person {
   return (contact as Person).firstName !== undefined;
 }
-
-//=============================================
-//Question 6:
-//=============================================
-//Question 7:
-//=============================================
 ```

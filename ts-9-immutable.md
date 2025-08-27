@@ -157,3 +157,112 @@ const bill = {
 } as const; //Immutable
 //Yes, bill has an immutable type, so all the assignments raise type errors now.
 ```
+
+# TS playground
+
+```ts
+//=============================================
+//Question 1:
+type Person = {
+  name: string;
+  readonly age: number;
+};
+const bob: Person = {
+  name: 'Bob',
+  age: 30,
+};
+bob.age = 31; //Error
+//Answer
+//  readonly age: number;
+
+//=============================================
+//Question 2:
+interface Result {
+  name: string;
+  readonly scores: number[];
+  readonly profile: {
+    level: number;
+  };
+}
+let billScores: Result = {
+  name: 'Bill',
+  scores: [90, 65, 80],
+  profile: {
+    level: 1,
+  },
+};
+console.log(billScores);
+billScores.scores.push(70); ///Question? -> no Error=mutable
+
+//Answer
+interface Result {
+  name: string;
+  readonly scores: readonly number[];
+  readonly profile: {
+    level: number;
+  };
+}
+
+//=============================================
+//Question 3: - Readonly utility type
+interface Result {
+  name: string;
+  scores: number[];
+  profile: {
+    level: number;
+  };
+}
+let billScores: Readonly<Result> = {
+  name: 'Bill',
+  scores: [90, 65, 80],
+  profile: {
+    level: 1,
+  },
+};
+
+billScores.name = 'Bob'; //ERROR
+billScores.scores.push(10); //NO ERROR - WHY?
+
+//Answer
+///Readonly only performs a shallow readonly mapping. Readonly also doesn't add readonly modifiers before array types.
+
+//=============================================
+//Question 4: - deep immutable
+const bill = {
+  name: 'Bill',
+  profile: {
+    level: 1,
+  },
+  scores: [90, 65, 80],
+} as const;
+bill.name = 'Bob'; //ERROR
+bill.profile.level = 2; //ERROR
+bill.scores.push(100); //ERROR
+
+//Answer
+// all fields are immutable using const
+
+//=============================================
+//Question 5: function parameter readonly
+type PersonScore = {
+  name: string;
+  score: number;
+};
+
+function doubleScore(person: PersonScore) {
+  person.score = person.score * 2;
+  return person;
+}
+
+const bill: PersonScore = {
+  name: 'Bill',
+  score: 90,
+};
+const doubleBill = doubleScore(bill);
+console.log(bill, doubleBill);
+
+///Answer
+function doubleScore(person: Readonly<PersonScore>) {
+  return { ...person, score: person.score * 2 };
+}
+```
