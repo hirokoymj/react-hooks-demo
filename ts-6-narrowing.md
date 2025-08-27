@@ -40,14 +40,7 @@ function double(item: string | number) {
   }
 }
 //=====Using an instanceof type guard
-function sayHello(contact: Contact) {
-  if (contact instanceof Person) {
-    console.log('Hello ' + contact.firstName);
-  }
-  if (contact instanceof Organisation) {
-    console.log('Hello ' + contact.name);
-  }
-}
+
 //=====Using an in type guard
 propertyName in objectVariable;
 function sayHello(contact: Contact) {
@@ -125,3 +118,121 @@ function speak(animal: Dog | Cat) {
 - animal instanceof Dog
 - 'woff' in animal
 - The instanceof type guard is a good choice because the code is checking a class instance. The in type guard also works in this case because the woff member can distinguish between the Dog and Cat types.
+
+# TS Playground Quiz
+
+```ts
+//Question 1:
+const button = document.querySelector('.go'); //Element | null
+if (button) {
+  button.disabled = true; //Error
+
+//Answer
+const button = document.querySelector('.go') as HTMLButtonElement;
+if (button) {
+  button.disabled = true; //Error
+}
+//=============================================
+//Question 2:
+function duplicate(text: string | null) {
+  if (text === null || text === undefined) {
+    text = '';
+  }
+  return text.concat(text); //Error strict mode with strictNullChecks
+}
+//Answer
+return text!.concat(text!);
+//=============================================
+//Question 3:
+//function double() with type guard
+console.log(double("a")); //aa
+console.log(double(1)); //2
+
+//Answer
+function double(item: string | number) {
+  if (typeof item === 'string') {
+    return item.concat(item);
+  } else {
+    return item + item;
+  }
+}
+//=============================================
+//Question 4:
+class Contact {
+  constructor(public emailAddress: string) {}
+}
+class Person extends Contact {
+  constructor(
+    public firstName: string,
+    public surname: string,
+    emailAddress: string
+  ) {
+    super(emailAddress);
+  }
+}
+class Organisation extends Contact {
+  constructor(public name: string, emailAddress: string) {
+    super(emailAddress);
+  }
+}
+
+function sayHello(contact: Contact) {
+	if(contact instanceof Person){
+		return `Hello ${contact.firstName}`
+	}else if (contact instanceof Organization){
+		return `Hello ${contact.name}`
+	}
+  // TODO - Output Hello {firstName} if a person
+  // TODO - Output Hello {name} if an organisation
+}
+
+const bob = new Person("Bob", "Young", "bob.young@somewhere.com");
+const redBricks = new Organisation(
+  "Red Bricks",
+  "info.redbricks@somewhere.com"
+);
+
+sayHello(bob);
+sayHello(redBricks);
+
+//Answer - instanceof
+function sayHello(contact: Contact) {
+  if (contact instanceof Person) {
+    console.log('Hello ' + contact.firstName);
+  }
+  if (contact instanceof Organisation) {
+    console.log('Hello ' + contact.name);
+  }
+}
+//Answer 2 - IN
+function sayHello(contact: Contact) {
+  // TODO - Output Hello {firstName} if a person
+  // TODO - Output Hello {name} if an organisation
+	if("firstName" in contact){
+		console.log(`Hello ${contact.firstName}`)
+	}
+  if ("name" in contact){
+		console.log(`Hello ${contact.name}`)
+	}
+}
+//=============================================
+//Question 5:
+
+function isPerson(contact: Contact) {}
+function sayHello(contact: Contact) {
+  // TODO - Output Hello {firstName} if a person
+	if(isPerson(contact)){
+		console.log(`Hello ${contact.firstName}`)
+	}
+}
+//Answer
+function isPerson(contact: Contact): contact is Person {
+  return (contact as Person).firstName !== undefined;
+}
+
+//=============================================
+//Question 6:
+//=============================================
+//Question 7:
+//=============================================
+```
