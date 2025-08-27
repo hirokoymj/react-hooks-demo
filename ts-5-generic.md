@@ -3,10 +3,11 @@
 **Summary**
 
 ```ts
-//1. Generics Type: Array, Promise, Object
-Array<T>;
-Promise<T>;
-Record<K, V>;
+//1. Array<T>, Promise<T>, Record<K, V>
+let scores: Array<number | string>;
+let coordinates: Array<Coordinate>;
+const userRespons: Promise<Response> = fetch('https://swapi.dev/api/');
+//3. Record<K, V>;
 ```
 
 ```ts
@@ -191,3 +192,276 @@ function logName<T extends {name: string}>(object: T) {
 ```
 
 - A generic parameter with a constraint containing a name property can be used to make the function more strongly-typed.
+
+### TS Playground
+
+```ts
+//Generics type
+//1
+let scores: Array<number | string>;
+scores = [70, 65, 75];
+scores = ['a', 'b', 'c']; //ERROR
+
+//2
+type Coordinate = [number, number];
+let coordinates: Array<Coordinate>;
+coordinates = [
+  [30, 100],
+  [100, 50],
+];
+
+//3 Promise
+const promisedRespons: Promise<Response> = fetch('https://swapi.dev/api/');
+promisedRespons.then((res) => console.log(res.ok));
+
+//4.-----Record<K, V>;
+type Result = {
+  firstName: string;
+  surname: string;
+  score: number;
+};
+type ResultRecord = Record<string, Result>;
+const records: ResultRecord = {
+  rodj: {
+    firstName: 'Rod',
+    surname: 'James',
+    score: 70,
+  },
+  janes: {
+    firstName: 'Jane',
+    surname: 'Smith',
+    score: 95,
+  },
+  fredp: {
+    firstName: 'Fred',
+    surname: 'Peters',
+    score: 60,
+  },
+};
+records.janes;
+
+type CatName = 'miffy' | 'boris' | 'mordred';
+
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+type CatRecord = Record<CatName, CatInfo>;
+const cats: CatRecord = {
+  miffy: { age: 10, breed: 'Persian' },
+  boris: { age: 5, breed: 'Maine Coon' },
+  mordred: { age: 16, breed: 'British Shorthair' },
+};
+
+//5.-----function ???
+
+// function firstOrNull:T(array: T[]): T{
+//     return array[0]
+// }
+
+function firstOrNull<T>(array: T[]): null | T {
+  return array.length === 0 ? null : array[0];
+}
+firstOrNull<string>(['Rod', 'Jane', 'Fred']);
+firstOrNull<number>([1, 2, 3]);
+
+///6. Interface
+interface Form<T> {
+  values: T;
+}
+type Contact = {
+  name: string;
+  email: string;
+};
+
+const contactForm: Form<Contact> = {
+  values: {
+    name: 'Bob',
+    email: 'bob@someemail.com',
+  },
+};
+///7.
+type ApiResponse<T> = {
+  data: T;
+  isError: boolean;
+};
+type User = {
+  name: string;
+  age: number;
+};
+const response: ApiResponse<User> = {
+  data: { name: 'hiroko', age: 30 },
+  isError: false,
+};
+```
+
+# TS Playground Quiz
+
+```ts
+//Q1.
+let scores: any
+scores = [70, 65, 75];
+scores = ["a", 'b', "c"]; //ERROR
+
+//Q2
+let coordinates: any
+coordinates = [
+  [30, 100],
+  [100, 50],
+];
+
+//3 Promise
+const promisedRespons:any = fetch('https://swapi.dev/api/');
+promisedRespons.then((res) => console.log(res.ok));
+
+
+//4.-----Record<K, V>;
+const records = {
+  rodj: {
+    firstName: 'Rod',
+    surname: 'James',
+    score: 70,
+  },
+  janes: {
+    firstName: 'Jane',
+    surname: 'Smith',
+    score: 95,
+  },
+  fredp: {
+    firstName: 'Fred',
+    surname: 'Peters',
+    score: 60,
+  },
+};
+
+//5.-----Record<K, V>;
+type CatName = "miffy" | "boris" | "mordred";
+
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+
+const cats = {
+  miffy: { age: 10, breed: "Persian" },
+  boris: { age: 5, breed: "Maine Coon" },
+  mordred: { age: 16, breed: "British Shorthair" },
+};
+
+
+//6.-----function
+function firstOrNull(array:any){
+     return array.length === 0 ? null : array[0];
+}
+firstOrNull(["Rod", "Jane", "Fred"]);
+firstOrNull([1, 2, 3]);
+
+-
+//7. Interface
+const contactForm:any = {
+    values: {
+        name: "Bob",
+        email: "bob@someemail.com"
+    }
+}
+//8.
+const response:any = {
+    data: {name: "hiroko", age: 30},
+    isError: false
+}
+```
+
+# TS Playground Answer
+
+```ts
+//Q1.
+//let scores: any
+let scores: Array<number | string>;
+scores = [70, 65, 75];
+scores = ['a', 'b', 'c']; //ERROR
+
+//Q2
+type Coordinate = [number, number];
+let coordinates: Array<Coordinate> = [
+  [30, 100],
+  [100, 50],
+];
+
+//3 Promise
+const promisedRespons: Promise<Response> = fetch('https://swapi.dev/api/');
+promisedRespons.then((res) => console.log(res.ok));
+
+//4.-----Record<K, V>;
+type UserInfo = {
+  firstName: string;
+  surname: string;
+  score: number;
+};
+type RecordData = Record<string, UserInfo>;
+const records: RecordData = {
+  rodj: {
+    firstName: 'Rod',
+    surname: 'James',
+    score: 70,
+  },
+  janes: {
+    firstName: 'Jane',
+    surname: 'Smith',
+    score: 95,
+  },
+  fredp: {
+    firstName: 'Fred',
+    surname: 'Peters',
+    score: 60,
+  },
+};
+
+//5.-----Record<K, V>;
+type CatName = 'miffy' | 'boris' | 'mordred';
+
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+type CatRecord = Record<CatName, CatInfo>;
+const cats: CatRecord = {
+  miffy: { age: 10, breed: 'Persian' },
+  boris: { age: 5, breed: 'Maine Coon' },
+  mordred: { age: 16, breed: 'British Shorthair' },
+};
+
+//6.-----function (Wrong, )
+function firstOrNull<T>(array: Array<T>): null | T {
+  return array.length === 0 ? null : array[0];
+}
+
+firstOrNull(['Rod', 'Jane', 'Fred']);
+firstOrNull([1, 2, 3]);
+
+//7. Interface (Wrong)
+
+type Form<T> = {
+  values: T;
+};
+type Contact = {
+  name: string;
+  email: string;
+};
+
+const contactForm: Form<Contact> = {
+  values: {
+    name: 'Bob',
+    email: 'bob@someemail.com',
+  },
+};
+//8. Wrong
+type ApiResponse<T> = {
+  data: T;
+  isError: boolean;
+};
+
+const response: ApiResponse<{ name: string; age: number }> = {
+  data: { name: 'hiroko', age: 30 },
+  isError: false,
+};
+```
