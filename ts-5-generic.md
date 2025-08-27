@@ -298,107 +298,40 @@ const response: ApiResponse<User> = {
 # TS Playground Quiz
 
 ```ts
-//Q1.
+//Question 1 - Array<>
 let scores: any
 scores = [70, 65, 75];
 scores = ["a", 'b', "c"]; //ERROR
 
-//Q2
-let coordinates: any
-coordinates = [
+//Answer
+let scores: Array<number | string>
+scores = [70, 65, 75];
+scores = ["a", 'b', "c", "d"];
+//=============================================
+//Question 2
+let coordinates: any = [
   [30, 100],
   [100, 50],
 ];
-
-//3 Promise
-const promisedRespons:any = fetch('https://swapi.dev/api/');
-promisedRespons.then((res) => console.log(res.ok));
-
-
-//4.-----Record<K, V>;
-const records = {
-  rodj: {
-    firstName: 'Rod',
-    surname: 'James',
-    score: 70,
-  },
-  janes: {
-    firstName: 'Jane',
-    surname: 'Smith',
-    score: 95,
-  },
-  fredp: {
-    firstName: 'Fred',
-    surname: 'Peters',
-    score: 60,
-  },
-};
-
-//5.-----Record<K, V>;
-type CatName = "miffy" | "boris" | "mordred";
-
-interface CatInfo {
-  age: number;
-  breed: string;
-}
-
-const cats = {
-  miffy: { age: 10, breed: "Persian" },
-  boris: { age: 5, breed: "Maine Coon" },
-  mordred: { age: 16, breed: "British Shorthair" },
-};
-
-
-//6.-----function
-function firstOrNull(array:any){
-     return array.length === 0 ? null : array[0];
-}
-firstOrNull(["Rod", "Jane", "Fred"]);
-firstOrNull([1, 2, 3]);
-
--
-//7. Interface
-const contactForm:any = {
-    values: {
-        name: "Bob",
-        email: "bob@someemail.com"
-    }
-}
-//8.
-const response:any = {
-    data: {name: "hiroko", age: 30},
-    isError: false
-}
-```
-
-# TS Playground Answer
-
-```ts
-//Q1.
-//let scores: any
-let scores: Array<number | string>;
-scores = [70, 65, 75];
-scores = ['a', 'b', 'c']; //ERROR
-
-//Q2
+//Answer
 type Coordinate = [number, number];
 let coordinates: Array<Coordinate> = [
   [30, 100],
   [100, 50],
 ];
 
-//3 Promise
-const promisedRespons: Promise<Response> = fetch('https://swapi.dev/api/');
+//=============================================
+//Question 3. Promise
+const promisedRespons:any = fetch('https://swapi.dev/api/');
 promisedRespons.then((res) => console.log(res.ok));
 
-//4.-----Record<K, V>;
-type UserInfo = {
-  firstName: string;
-  surname: string;
-  score: number;
-};
-type RecordData = Record<string, UserInfo>;
-const records: RecordData = {
+//Answer
+const promisedRespons:Promise<Response> = fetch('https://swapi.dev/api/');
+promisedRespons.then((res) => console.log(res.ok));
+
+//=============================================
+//Question 4.
+const records: any = {
   rodj: {
     firstName: 'Rod',
     surname: 'James',
@@ -415,53 +348,144 @@ const records: RecordData = {
     score: 60,
   },
 };
+//Answer: Record<K, V>
 
-//5.-----Record<K, V>;
-type CatName = 'miffy' | 'boris' | 'mordred';
+type UserInfo = {
+  firstName: string;
+  surname: string;
+  score: number
+}
+type BookInfo = {
+  title: string;
+  author: string;
+}
 
-interface CatInfo {
+// type UserRecord = Record<string, UserInfo>
+// type BookRecord = Record<string, BookInfo>
+type RecordData<T> = Record<string, T>
+
+//const records: UserRecord = {
+const records: RecordData<UserInfo> = {
+  rodj: {
+    firstName: 'Rod',
+    surname: 'James',
+    score: 70,
+  },
+  janes: {
+    firstName: 'Jane',
+    surname: 'Smith',
+    score: 95,
+  },
+  fredp: {
+    firstName: 'Fred',
+    surname: 'Peters',
+    score: 60,
+  },
+};
+//const books:BookRecord = {
+const books:RecordData<BookInfo> = {
+  book1: {
+    title: "a",
+    author: "aaa"
+  },
+  book2: {
+    title: "b";
+    author: "bbb"
+  }
+}
+//=============================================
+//Q5. Record<K, V>
+type CatName = "miffy" | "boris" | "mordred";
+const cats:any = {
+  miffy: { age: 10, breed: "Persian" },
+  boris: { age: 5, breed: "Maine Coon" },
+  mordred: { age: 16, breed: "British Shorthair" },
+};
+
+//Answer
+interface CatInfo  {
   age: number;
-  breed: string;
+  breed: string
 }
-type CatRecord = Record<CatName, CatInfo>;
-const cats: CatRecord = {
-  miffy: { age: 10, breed: 'Persian' },
-  boris: { age: 5, breed: 'Maine Coon' },
-  mordred: { age: 16, breed: 'British Shorthair' },
+const cats:Record<CatName,CatInfo> = {
+  miffy: { age: 10, breed: "Persian" },
+  boris: { age: 5, breed: "Maine Coon" },
+  mordred: { age: 16, breed: "British Shorthair" },
 };
-
-//6.-----function (Wrong, )
-function firstOrNull<T>(array: Array<T>): null | T {
-  return array.length === 0 ? null : array[0];
+//=============================================
+//Question 6
+function getFirstElement(array: (number | string)[]): (number | string){
+     return array[0];
 }
+getFirstElement([1, 2, 3]);
+getFirstElement(["Rod", "Jane", "Fred"]);
 
-firstOrNull(['Rod', 'Jane', 'Fred']);
-firstOrNull([1, 2, 3]);
-
-//7. Interface (Wrong)
-
-type Form<T> = {
-  values: T;
-};
+//A6
+function getFirstElement<T>(array: T[]): T{
+     return array[0];
+}
+//=============================================
+//Question 7
+const contactForm: any = {
+    values: {
+        name: "Bob",
+        email: "bob@someemail.com"
+    }
+}
+const bookForm:any = {
+	valuse: {
+		title: "test";
+		author: "John Smith"
+	}
+}
+//A7.
 type Contact = {
   name: string;
   email: string;
-};
-
-const contactForm: Form<Contact> = {
-  values: {
-    name: 'Bob',
-    email: 'bob@someemail.com',
-  },
-};
-//8. Wrong
+}
+type Book = {
+  title: string;
+  author: string
+}
+type Form<T> = {
+  values: T
+}
+const contactForm:Form<Contact> = {
+	values: {
+		name: "Bob",
+		email: "bob@someemail.com"
+	}
+}
+const bookForm: Form<Book> = {
+	values: {
+		title: "test",
+		author: "John Smith"
+	}
+}
+//=============================================
+//Question 8
+const response = {
+    data: {name: "hiroko", age: 30},
+    isError: false
+}
+//A8.
 type ApiResponse<T> = {
   data: T;
-  isError: boolean;
-};
-
+  isError: boolean
+}
 const response: ApiResponse<{ name: string; age: number }> = {
   data: { name: 'hiroko', age: 30 },
   isError: false,
 };
+
+type Contact = {
+  name: string;
+  age: number
+}
+
+const contactResponse: ApiResponse<Contact> = {
+    data: {name: "hiroko", age: 30},
+    isError: false
+}
+//=============================================
 ```
