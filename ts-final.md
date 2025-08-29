@@ -60,9 +60,31 @@ function doubleScore(person: Readonly<PersonScore>) {}
 const bill = {} as const
 ```
 
+## Never
+
+```ts
+type Status = 'Pending' | 'Working' | 'Complete' | 'Cancelled';
+function neverReached(never: never) {}
+function doSomeAction(status: Status) {
+  switch (status) {
+    case 'Pending':
+      break;
+    case 'Working':
+      break;
+    case 'Complete':
+      break;
+    // case 'Cancelled':
+    //   break;
+    default:
+      neverReached(status); //Error - adding Cancelled then the type error is gone.
+  }
+}
+doSomeAction('Pending');
+```
+
 # TS Playground exercise
 
-- https://typescript-exercises.github.io/#exercise=4&file=%2Findex.ts
+- [TypeScript Coding Exercises](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts.md)
 - [Using types](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-1-using-types.md#ts-playground-quiz)
 - [Standard type](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-2-standard-type.md#ts-playground)
 - [Create a type](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-3-create-types.md#ts-playground)
@@ -70,3 +92,7 @@ const bill = {} as const
 - [Narrowing](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-6-narrowing.md#ts-playground-quiz)
 - [Mapping](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-6-narrowing.md#ts-playground-quiz)
 - [Immutable](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-9-immutable.md#ts-playground-quiz)
+
+```
+
+```
