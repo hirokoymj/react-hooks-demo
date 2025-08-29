@@ -37,6 +37,13 @@ V (for "V"alue)
 typeof => primitive
 instanceof - Classs
 in. - Object
+
+//=============================================
+// Mapping: keyof
+interface Form<T> {
+  values: T;
+  errors: { [K in keyof T]?: string };
+}
 //=============================================
 // Immutable: readonly, Readonly<T>, const
 Primitive -> readonly
@@ -52,3 +59,14 @@ type Person = {
 function doubleScore(person: Readonly<PersonScore>) {}
 const bill = {} as const
 ```
+
+# TS Playground exercise
+
+- https://typescript-exercises.github.io/#exercise=4&file=%2Findex.ts
+- [Using types](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-1-using-types.md#ts-playground-quiz)
+- [Standard type](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-2-standard-type.md#ts-playground)
+- [Create a type](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-3-create-types.md#ts-playground)
+- [Generic](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-5-generic.md#ts-playground-quiz-final-check)
+- [Narrowing](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-6-narrowing.md#ts-playground-quiz)
+- [Mapping](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-6-narrowing.md#ts-playground-quiz)
+- [Immutable](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts-9-immutable.md#ts-playground-quiz)

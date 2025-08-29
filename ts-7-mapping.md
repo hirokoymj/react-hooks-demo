@@ -139,7 +139,7 @@ type Writable<T> = {
 }
 ```
 
-# TS Playground
+# TS Playground Quiz
 
 ```ts
 //=============================================

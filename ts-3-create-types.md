@@ -158,7 +158,7 @@ level = "4"; //ERROR
 
 - A bestBeforeDate doesn't apply to every product though. So, we want to allow this to be null or a date. What type best represents this?
 
-# TS Playground
+# TS Playground Quiz
 
 ```ts
 //=============================================

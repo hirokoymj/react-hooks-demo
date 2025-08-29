@@ -193,7 +193,7 @@ function logName<T extends {name: string}>(object: T) {
 
 - A generic parameter with a constraint containing a name property can be used to make the function more strongly-typed.
 
-# TS Playground Quiz (Final check)
+# TS Playground Quiz
 
 ```ts
 //Question 1 - Array<>

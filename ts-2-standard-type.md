@@ -181,7 +181,7 @@ function outputMessage(message: string) {
 
 - A: The never type is used to represent a type of value that will never occur.
 
-# TS Playground
+# TS Playground Quiz
 
 ```ts
 //=============================================
