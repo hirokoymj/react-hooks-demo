@@ -331,8 +331,8 @@ const contactForm: any = {
     }
 }
 const bookForm:any = {
-	valuse: {
-		title: "test";
+	values: {
+		title: "test",
 		author: "John Smith"
 	}
 }

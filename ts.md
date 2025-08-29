@@ -1,5 +1,6 @@
 # Exercise
-
+- https://typescript-exercises.github.io/#exercise=4&file=%2Findex.ts
+  
 ```js
 =====1.
 type User = {}

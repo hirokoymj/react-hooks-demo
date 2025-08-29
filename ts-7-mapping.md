@@ -1,9 +1,59 @@
 # Mapped
 
+**Summary**
+
+```ts
+keyof - keys for an object
+typeof - for primitive type,
+instanceof - for a Class
+```
+
 ```ts
 //=====Using keyof
+// Q. Add a type annotation to keys that uses the keyof operator on the ContactDetails type.
+type ContactDetails = { name: string; email: string };
+//A
+let keys: keyof ContactDetails;
+
 //=====Creating a mapped type
+//Q: Create errors type
+interface Form<T> {
+  values: T;
+  errors: any;
+}
+
+const contactForm: Form<{ name: string; email: string }> = {
+  values: {
+    name: "Bob",
+    email: "bob@someemail.com"
+  },
+  errors: {
+    email: "Invalid email address"
+  }
+};
+console.log(contactForm);
+//A:
+interface Form<T> {
+  values: T;
+  errors: { [K in keyof T]?: string };
+}
+//its keys are optional by placing a question mark (?)
+
+const contactForm: Form<{ name: string; email: string }> = {
+  values: {
+    name: "Bob",
+    email: "bob@someemail.com"
+  },
+  errors: {
+    email: "Invalid email address"
+  }
+};
+console.log(contactForm);
+
+
+
 //=====Using mapped type modifiers
+{  [K in keyof T]?: TypeName}
 //=====Using typeof to infer a type
 ```
 
@@ -87,4 +137,59 @@ type Person = {
 type Writable<T> = {
     -readonly [P in keyof T]: T[P];
 }
+```
+
+# TS Playground
+
+```ts
+//=============================================
+//Question 1:
+// Add a type annotation to keys
+type ContactDetails = { name: string; email: string };
+//A1.
+let keys: keyof ContactDetails;
+
+//=============================================
+//Question 2
+// Replace any
+interface Form<T> {
+  values: T;
+  errors: any;
+}
+
+const contactForm: Form<{ name: string; email: string }> = {
+  values: {
+    name: 'Bob',
+    email: 'bob@someemail.com',
+  },
+  errors: {
+    email: 'Invalid email address',
+  },
+};
+console.log(contactForm);
+//A:
+//Point - keyof, ? = optional operator
+interface Form<T> {
+  values: T;
+  errors: { [K in keyof T]?: string };
+}
+//its keys are optional by placing a question mark (?)
+
+const contactForm: Form<{ name: string; email: string }> = {
+  values: {
+    name: 'Bob',
+    email: 'bob@someemail.com',
+  },
+  errors: {
+    email: 'Invalid email address',
+  },
+};
+console.log(contactForm);
+//=============================================
+//Question 3:
+// Create a type for keys in Point type.
+type Point = { x: number; y: number };
+type P = ??
+//A
+type P = keyof Point;
 ```
