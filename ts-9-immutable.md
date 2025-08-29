@@ -158,7 +158,7 @@ const bill = {
 //Yes, bill has an immutable type, so all the assignments raise type errors now.
 ```
 
-# TS playground
+# TS Playground Quiz
 
 ```ts
 //=============================================
