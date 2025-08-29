@@ -82,6 +82,15 @@ function doSomeAction(status: Status) {
 doSomeAction('Pending');
 ```
 
+## Tuple
+
+```ts
+const [state, setState] = useState(initialState);
+const tomScore: [string, number] = ['Tom', 70];
+let benScores: [name: string, ...scores: number[]];
+benScores = ['Ben', 50, 75, 85];
+```
+
 # TS Playground exercise
 
 - [TypeScript Coding Exercises](https://github.com/hirokoymj/react-hooks-demo/blob/main/ts.md)
